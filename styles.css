@@ -648,3 +648,128 @@ tr:hover {
         font-size: 16px;
     }
 }
+.follow-mouse-scroll {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.follow-mouse-scroll:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.follow-mouse-scroll.show {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.follow-mouse-scroll:active {
+    transform: scale(0.95);
+}
+
+.follow-mouse-scroll.clicking {
+    animation: clickPulse 0.3s ease;
+}
+
+@keyframes clickPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* เอฟเฟกต์เมื่อเลื่อนตาม Mouse */
+.follow-mouse-scroll.following {
+    transition: all 0.15s ease-out;
+}
+
+/* Cursor trail effect */
+.follow-mouse-scroll::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.follow-mouse-scroll.show::before {
+    opacity: 1;
+}
+
+/* สำหรับ Mobile - แสดงที่มุมขวาล่าง */
+@media (max-width: 768px) {
+    .follow-mouse-scroll {
+        bottom: 20px !important;
+        right: 20px !important;
+        left: auto !important;
+        top: auto !important;
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+        position: fixed;
+        transform: none !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .follow-mouse-scroll.show {
+        transform: none !important;
+    }
+    
+    .follow-mouse-scroll:hover {
+        transform: scale(1.05) !important;
+    }
+}
+
+/* Alternative Styles */
+.follow-mouse-scroll.magnetic {
+    transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.follow-mouse-scroll.pulse {
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+    50% {
+        box-shadow: 0 4px 25px rgba(102, 126, 234, 0.6);
+    }
+}
+
+/* Trail effect */
+.mouse-trail {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: rgba(102, 126, 234, 0.6);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999;
+    transition: all 0.1s ease;
+}

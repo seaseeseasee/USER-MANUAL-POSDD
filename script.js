@@ -709,3 +709,197 @@ function initScrollToTop() {
     
     console.log('✅ Scroll to top button initialized');
 }
+// Follow Mouse Scroll Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(initFollowMouseScroll, 100);
+});
+
+function initFollowMouseScroll() {
+    const followBtn = document.getElementById('followMouseBtn');
+    
+    if (!followBtn) {
+        console.log('Follow mouse button not found');
+        return;
+    }
+    
+    let mouseX = 0;
+    let mouseY = 0;
+    let isVisible = false;
+    let isMobile = window.innerWidth <= 768;
+    
+    // ตรวจสอบว่าเป็น Mobile หรือไม่
+    function checkMobile() {
+        isMobile = window.innerWidth <= 768;
+        if (isMobile) {
+            followBtn.style.position = 'fixed';
+            followBtn.style.bottom = '20px';
+            followBtn.style.right = '20px';
+            followBtn.style.left = 'auto';
+            followBtn.style.top = 'auto';
+        }
+    }
+    
+    // ติดตาม Mouse Position
+    function updateMousePosition(e) {
+        if (isMobile) return;
+        
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        if (isVisible) {
+            // วางปุ่มห่างจากเมาส์เล็กน้อย
+            const offsetX = 30;
+            const offsetY = 30;
+            
+            // คำนวณตำแหน่งใหม่
+            let newX = mouseX + offsetX;
+            let newY = mouseY + offsetY;
+            
+            // ป้องกันไม่ให้ปุ่มออกนอกหน้าจอ
+            const btnWidth = 50;
+            const btnHeight = 50;
+            const maxX = window.innerWidth - btnWidth - 10;
+            const maxY = window.innerHeight - btnHeight - 10;
+            
+            newX = Math.min(Math.max(10, newX), maxX);
+            newY = Math.min(Math.max(10, newY), maxY);
+            
+            followBtn.style.left = newX + 'px';
+            followBtn.style.top = newY + 'px';
+            followBtn.style.right = 'auto';
+            followBtn.style.bottom = 'auto';
+        }
+    }
+    
+    // แสดง/ซ่อนปุ่มตาม Scroll Position
+    function toggleButton() {
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollPosition > 300) {
+            if (!isVisible) {
+                isVisible = true;
+                followBtn.classList.add('show');
+                followBtn.classList.add('following');
+                
+                if (!isMobile) {
+                    // ตั้งตำแหน่งเริ่มต้นใกล้เมาส์
+                    updateMousePosition({ clientX: mouseX, clientY: mouseY });
+                }
+            }
+        } else {
+            if (isVisible) {
+                isVisible = false;
+                followBtn.classList.remove('show');
+                followBtn.classList.remove('following');
+            }
+        }
+    }
+    
+    // Scroll to Top Function
+    function scrollToTop() {
+        followBtn.classList.add('clicking');
+        
+        // Smooth scroll
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        
+        // เอา animation class ออกหลัง animation เสร็จ
+        setTimeout(() => {
+            followBtn.classList.remove('clicking');
+        }, 300);
+    }
+    
+    // Magnetic Effect (ปุ่มดึงดูดเมาส์)
+    function addMagneticEffect(e) {
+        if (isMobile || !isVisible) return;
+        
+        const btnRect = followBtn.getBoundingClientRect();
+        const btnCenterX = btnRect.left + btnRect.width / 2;
+        const btnCenterY = btnRect.top + btnRect.height / 2;
+        
+        const distance = Math.sqrt(
+            Math.pow(e.clientX - btnCenterX, 2) + 
+            Math.pow(e.clientY - btnCenterY, 2)
+        );
+        
+        // ถ้าเมาส์ใกล้ปุ่ม (ระยะ < 100px) ให้ปุ่มดึงดูด
+        if (distance < 100) {
+            const pullStrength = (100 - distance) / 100 * 20;
+            const angleX = (e.clientX - btnCenterX) / distance;
+            const angleY = (e.clientY - btnCenterY) / distance;
+            
+            const newX = btnCenterX + (angleX * pullStrength) - btnRect.width / 2;
+            const newY = btnCenterY + (angleY * pullStrength) - btnRect.height / 2;
+            
+            followBtn.style.left = newX + 'px';
+            followBtn.style.top = newY + 'px';
+            
+            followBtn.classList.add('magnetic');
+        } else {
+            followBtn.classList.remove('magnetic');
+        }
+    }
+    
+    // Event Listeners
+    document.addEventListener('mousemove', function(e) {
+        updateMousePosition(e);
+        addMagneticEffect(e);
+    });
+    
+    window.addEventListener('scroll', toggleButton);
+    window.addEventListener('resize', checkMobile);
+    followBtn.addEventListener('click', scrollToTop);
+    
+    // Keyboard accessibility
+    followBtn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            scrollToTop();
+        }
+    });
+    
+    // เริ่มต้น
+    checkMobile();
+    toggleButton();
+    
+    console.log('✅ Follow mouse scroll button initialized');
+}
+
+// Optional: Mouse Trail Effect
+function createMouseTrail() {
+    let trails = [];
+    const maxTrails = 10;
+    
+    document.addEventListener('mousemove', function(e) {
+        if (window.innerWidth <= 768) return; // ไม่ใช้ใน Mobile
+        
+        // สร้าง trail element
+        const trail = document.createElement('div');
+        trail.className = 'mouse-trail';
+        trail.style.left = e.clientX + 'px';
+        trail.style.top = e.clientY + 'px';
+        
+        document.body.appendChild(trail);
+        trails.push(trail);
+        
+        // ลบ trail เก่า
+        if (trails.length > maxTrails) {
+            const oldTrail = trails.shift();
+            oldTrail.remove();
+        }
+        
+        // Fade out trail
+        setTimeout(() => {
+            trail.style.opacity = '0';
+            trail.style.transform = 'scale(0)';
+        }, 100);
+        
+        setTimeout(() => {
+            if (trail.parentNode) {
+                trail.remove();
+            }
+        }, 200);
+    });
+}

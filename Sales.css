@@ -390,13 +390,12 @@
     }
 }
 
-/* Logo styling specific to sales page */
 .logo-container {
     text-align: center;
     padding: 20px 15px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     margin-bottom: 20px;
-    background: rgba(237, 137, 54, 0.1);
+    background: rgba(72, 187, 120, 0.1);
 }
 
 .sidebar-logo {
