@@ -537,3 +537,49 @@ tr:hover {
         font-size: 12px;
     }
 }
+/* ปรับขนาด logo ให้พอดี */
+.logo {
+    max-width: 250px;        /* จำกัดความกว้างสูงสุด */
+    max-height: 125px;        /* จำกัดความสูงสูงสุด */
+    width: auto;             /* ให้ปรับตามอัตราส่วน */
+    height: auto;            /* ให้ปรับตามอัตราส่วน */
+    object-fit: contain;     /* รักษาอัตราส่วนเดิม */
+    display: block;          /* แสดงเป็น block */
+    margin: 0 auto 20px;     /* จัดกึ่งกลางและเว้นระยะล่าง */
+}
+
+/* Container สำหรับ logo */
+.logo-container {
+    text-align: center;
+    padding: 15px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 15px;
+}
+/* สำหรับหน้าจอขนาดกลาง */
+@media (max-width: 1024px) {
+    .logo {
+        max-width: 100px;
+        max-height: 50px;
+    }
+}
+
+/* สำหรับมือถือ */
+@media (max-width: 768px) {
+    .logo {
+        max-width: 80px;
+        max-height: 40px;
+    }
+    
+    .logo-container {
+        padding: 10px 8px;
+        margin-bottom: 10px;
+    }
+}
+
+/* สำหรับมือถือขนาดเล็ก */
+@media (max-width: 480px) {
+    .logo {
+        max-width: 70px;
+        max-height: 35px;
+    }
+}
