@@ -903,3 +903,345 @@ function createMouseTrail() {
         }, 200);
     });
 }
+// ==================== SIDEBAR FOLLOW MOUSE FUNCTIONALITY ====================
+// เพิ่มใน script.js
+
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(initSidebarFollowMouse, 100);
+});
+
+function initSidebarFollowMouse() {
+    const sidebar = document.querySelector('.sidebar');
+    const mainContent = document.querySelector('.main-content');
+    
+    if (!sidebar) {
+        console.log('Sidebar not found');
+        return;
+    }
+    
+    let mouseX = 0;
+    let mouseY = 0;
+    let isMobile = window.innerWidth <= 768;
+    let isCollapsed = false;
+    let isMouseTracking = true;
+    
+    // สร้างปุ่ม Toggle Sidebar
+    createSidebarToggle();
+    
+    // สร้าง Mobile Overlay
+    if (isMobile) {
+        createMobileOverlay();
+    }
+    
+    // การตั้งค่า
+    const CONFIG = {
+        // ระยะที่ sidebar จะเลื่อนตาม mouse
+        followStrength: 0.1,
+        
+        // ระยะ Magnetic Effect
+        magneticDistance: 150,
+        magneticStrength: 30,
+        
+        // ความเร็วในการติดตาม
+        followSpeed: 0.15,
+        
+        // เปิด/ปิด Parallax Effect
+        enableParallax: true,
+        
+        // เปิด/ปิด Magnetic Effect
+        enableMagnetic: true,
+        
+        // เปิด/ปิด Auto Hide
+        enableAutoHide: false
+    };
+    
+    // ตรวจสอบ Mobile
+    function checkMobile() {
+        const wasMobile = isMobile;
+        isMobile = window.innerWidth <= 768;
+        
+        if (wasMobile !== isMobile) {
+            if (isMobile) {
+                setupMobile();
+            } else {
+                setupDesktop();
+            }
+        }
+    }
+    
+    // Setup Desktop Mode
+    function setupDesktop() {
+        sidebar.style.position = 'fixed';
+        sidebar.style.transform = 'translateX(0)';
+        sidebar.classList.remove('mobile-open');
+        mainContent.style.marginLeft = isCollapsed ? '50px' : '250px';
+        
+        // เปิดใช้ mouse tracking
+        enableMouseTracking();
+    }
+    
+    // Setup Mobile Mode  
+    function setupMobile() {
+        sidebar.style.position = 'fixed';
+        sidebar.style.transform = 'translateX(-100%)';
+        mainContent.style.marginLeft = '0';
+        
+        // ปิด mouse tracking
+        disableMouseTracking();
+    }
+    
+    // เปิดใช้ Mouse Tracking
+    function enableMouseTracking() {
+        if (isMobile) return;
+        
+        isMouseTracking = true;
+        sidebar.classList.add('mouse-tracking');
+        
+        document.addEventListener('mousemove', handleMouseMove);
+    }
+    
+    // ปิด Mouse Tracking
+    function disableMouseTracking() {
+        isMouseTracking = false;
+        sidebar.classList.remove('mouse-tracking');
+        
+        document.removeEventListener('mousemove', handleMouseMove);
+        
+        // รีเซ็ต position
+        sidebar.style.transform = isCollapsed ? 'translateX(-200px)' : 'translateX(0)';
+    }
+    
+    // จัดการการเคลื่อนไหวของ Mouse
+    function handleMouseMove(e) {
+        if (!isMouseTracking || isMobile || isCollapsed) return;
+        
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        // Parallax Effect
+        if (CONFIG.enableParallax) {
+            applyParallaxEffect(e);
+        }
+        
+        // Magnetic Effect
+        if (CONFIG.enableMagnetic) {
+            applyMagneticEffect(e);
+        }
+    }
+    
+    // Parallax Effect
+    function applyParallaxEffect(e) {
+        const centerY = window.innerHeight / 2;
+        const mouseOffsetY = (e.clientY - centerY) / centerY;
+        
+        // คำนวณการเลื่อน (เลื่อนย้อนกับ mouse)
+        const moveY = mouseOffsetY * CONFIG.followStrength * -20;
+        
+        // จำกัดการเลื่อน
+        const maxMove = 30;
+        const clampedMoveY = Math.max(-maxMove, Math.min(maxMove, moveY));
+        
+        sidebar.style.transform = `translateY(${clampedMoveY}px)`;
+    }
+    
+    // Magnetic Effect
+    function applyMagneticEffect(e) {
+        const sidebarRect = sidebar.getBoundingClientRect();
+        const sidebarCenterX = sidebarRect.left + sidebarRect.width / 2;
+        const sidebarCenterY = sidebarRect.top + sidebarRect.height / 2;
+        
+        const distance = Math.sqrt(
+            Math.pow(e.clientX - sidebarCenterX, 2) + 
+            Math.pow(e.clientY - sidebarCenterY, 2)
+        );
+        
+        // ถ้าเมาส์ใกล้ sidebar
+        if (distance < CONFIG.magneticDistance) {
+            const pullStrength = (CONFIG.magneticDistance - distance) / CONFIG.magneticDistance * CONFIG.magneticStrength;
+            const angleX = (e.clientX - sidebarCenterX) / distance;
+            const angleY = (e.clientY - sidebarCenterY) / distance;
+            
+            const moveX = Math.max(-10, Math.min(10, angleX * pullStrength));
+            const moveY = Math.max(-20, Math.min(20, angleY * pullStrength));
+            
+            sidebar.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            sidebar.classList.add('magnetic');
+        } else {
+            sidebar.classList.remove('magnetic');
+            
+            // รีเซ็ตกลับตำแหน่งเดิม
+            if (!CONFIG.enableParallax) {
+                sidebar.style.transform = 'translate(0, 0)';
+            }
+        }
+    }
+    
+    // สร้างปุ่ม Toggle
+    function createSidebarToggle() {
+        const toggleBtn = document.createElement('button');
+        toggleBtn.className = 'sidebar-toggle';
+        toggleBtn.innerHTML = '☰';
+        toggleBtn.title = 'Toggle Sidebar';
+        
+        // เพิ่มใน main content
+        mainContent.appendChild(toggleBtn);
+        
+        toggleBtn.addEventListener('click', toggleSidebar);
+    }
+    
+    // Toggle Sidebar
+    function toggleSidebar() {
+        if (isMobile) {
+            toggleMobileSidebar();
+        } else {
+            toggleDesktopSidebar();
+        }
+    }
+    
+    // Toggle Desktop Sidebar
+    function toggleDesktopSidebar() {
+        isCollapsed = !isCollapsed;
+        
+        if (isCollapsed) {
+            sidebar.classList.add('collapsed');
+            mainContent.style.marginLeft = '50px';
+            
+            // ปิด mouse tracking เมื่อหด
+            disableMouseTracking();
+        } else {
+            sidebar.classList.remove('collapsed');
+            mainContent.style.marginLeft = '250px';
+            
+            // เปิด mouse tracking เมื่อขยาย
+            enableMouseTracking();
+        }
+        
+        // อัปเดตไอคอนปุ่ม
+        const toggleBtn = document.querySelector('.sidebar-toggle');
+        toggleBtn.innerHTML = isCollapsed ? '☰' : '✕';
+    }
+    
+    // Toggle Mobile Sidebar
+    function toggleMobileSidebar() {
+        const isOpen = sidebar.classList.contains('mobile-open');
+        const overlay = document.querySelector('.sidebar-overlay');
+        
+        if (isOpen) {
+            sidebar.classList.remove('mobile-open');
+            overlay.classList.remove('show');
+        } else {
+            sidebar.classList.add('mobile-open');
+            overlay.classList.add('show');
+        }
+        
+        // อัปเดตไอคอนปุ่ม
+        const toggleBtn = document.querySelector('.sidebar-toggle');
+        toggleBtn.innerHTML = isOpen ? '☰' : '✕';
+    }
+    
+    // สร้าง Mobile Overlay
+    function createMobileOverlay() {
+        const overlay = document.createElement('div');
+        overlay.className = 'sidebar-overlay';
+        document.body.appendChild(overlay);
+        
+        overlay.addEventListener('click', function() {
+            toggleMobileSidebar();
+        });
+    }
+    
+    // Auto Hide Sidebar (เมื่อ scroll)
+    function handleScroll() {
+        if (!CONFIG.enableAutoHide || isMobile) return;
+        
+        const scrollY = window.pageYOffset;
+        
+        if (scrollY > 100 && !isCollapsed) {
+            // ซ่อน sidebar เมื่อ scroll ลง
+            sidebar.style.transform = 'translateX(-50px)';
+            sidebar.style.opacity = '0.7';
+        } else if (!isCollapsed) {
+            // แสดง sidebar เมื่อ scroll ขึ้น
+            sidebar.style.transform = 'translateX(0)';
+            sidebar.style.opacity = '1';
+        }
+    }
+    
+    // Event Listeners
+    window.addEventListener('resize', checkMobile);
+    
+    if (CONFIG.enableAutoHide) {
+        window.addEventListener('scroll', handleScroll);
+    }
+    
+    // Keyboard Shortcuts
+    document.addEventListener('keydown', function(e) {
+        // กด Ctrl+B เพื่อ toggle sidebar
+        if (e.ctrlKey && e.key === 'b') {
+            e.preventDefault();
+            toggleSidebar();
+        }
+        
+        // กด Escape เพื่อปิด mobile sidebar
+        if (e.key === 'Escape' && isMobile) {
+            if (sidebar.classList.contains('mobile-open')) {
+                toggleMobileSidebar();
+            }
+        }
+    });
+    
+    // เริ่มต้น
+    checkMobile();
+    
+    console.log('✅ Sidebar follow mouse initialized');
+}
+
+// ==================== ADDITIONAL FEATURES ====================
+
+// เปลี่ยนสี Sidebar ตามหน้า
+function setSidebarTheme(page) {
+    const sidebar = document.querySelector('.sidebar');
+    if (!sidebar) return;
+    
+    // ลบ theme เก่า
+    sidebar.classList.remove('time-page', 'sales-page', 'employees-page');
+    
+    // เพิ่ม theme ใหม่
+    switch(page) {
+        case 'time-recording':
+            sidebar.classList.add('time-page');
+            break;
+        case 'sales-access':
+            sidebar.classList.add('sales-page');
+            break;
+        case 'employees':
+            sidebar.classList.add('employees-page');
+            break;
+    }
+}
+
+// เรียกใช้ตาม CURRENT_PAGE
+if (typeof window.CURRENT_PAGE !== 'undefined') {
+    setSidebarTheme(window.CURRENT_PAGE);
+}
+
+// Smooth Scrolling สำหรับ Sidebar Menu
+document.addEventListener('DOMContentLoaded', function() {
+    const sidebarLinks = document.querySelectorAll('.sidebar a[href^="#"]');
+    
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+});

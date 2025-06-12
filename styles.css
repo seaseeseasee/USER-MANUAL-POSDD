@@ -773,3 +773,225 @@ tr:hover {
     z-index: 999;
     transition: all 0.1s ease;
 }
+/* ==================== SIDEBAR FOLLOW SCROLL ==================== */
+
+/* เพิ่มใน styles.css */
+
+/* Sidebar ติดตาม Scroll */
+.sidebar {
+    position: fixed; /* เปลี่ยนจาก relative เป็น fixed */
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background: linear-gradient(180deg, #4a5568 0%, #2d3748 100%);
+    color: white;
+    padding: 20px 0;
+    overflow-y: auto;
+    z-index: 999;
+    transition: transform 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar ขยับตาม Mouse */
+.sidebar.follow-mouse {
+    transition: all 0.2s ease-out;
+}
+
+/* Main content ปรับให้เว้นที่สำหรับ sidebar */
+.main-content {
+    margin-left: 250px; /* เว้นที่สำหรับ sidebar */
+    min-height: 100vh;
+    transition: margin-left 0.3s ease;
+}
+
+/* Sidebar Magnetic Effect */
+.sidebar.magnetic {
+    transition: all 0.15s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* เมื่อ sidebar หด */
+.sidebar.collapsed {
+    transform: translateX(-200px); /* หดเข้าไปในตัว */
+    width: 50px;
+}
+
+.sidebar.collapsed + .main-content {
+    margin-left: 50px; /* ปรับ main content */
+}
+
+/* ปุ่มขยาย/หด sidebar */
+.sidebar-toggle {
+    position: fixed;
+    top: 20px;
+    left: 260px; /* วางหลัง sidebar */
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-toggle:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    transform: translateX(5px);
+}
+
+.sidebar.collapsed + .main-content .sidebar-toggle {
+    left: 60px; /* เลื่อนไปตาม sidebar ที่หด */
+}
+
+/* Sidebar เนื้อหาซ่อนเมื่อหด */
+.sidebar.collapsed h3,
+.sidebar.collapsed .search-container,
+.sidebar.collapsed ul {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.sidebar.collapsed .logo-container {
+    padding: 10px 5px;
+}
+
+.sidebar.collapsed .sidebar-logo {
+    max-width: 30px;
+    max-height: 30px;
+}
+
+/* Hover เพื่อขยาย sidebar ชั่วคราว */
+.sidebar.collapsed:hover {
+    transform: translateX(0);
+    width: 250px;
+}
+
+.sidebar.collapsed:hover h3,
+.sidebar.collapsed:hover .search-container,
+.sidebar.collapsed:hover ul {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.3s ease 0.1s; /* delay เล็กน้อย */
+}
+
+/* แยก viewport แบบ Mobile */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        transform: translateX(-100%); /* ซ่อนใน mobile */
+        z-index: 1001;
+    }
+    
+    .sidebar.mobile-open {
+        transform: translateX(0); /* แสดงเมื่อเปิด */
+    }
+    
+    .main-content {
+        margin-left: 0; /* ไม่เว้นที่ใน mobile */
+    }
+    
+    .sidebar-toggle {
+        left: 20px;
+        top: 20px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .sidebar.mobile-open + .main-content .sidebar-toggle {
+        left: 270px; /* เลื่อนออกไปเมื่อ sidebar เปิด */
+    }
+    
+    /* Mobile overlay */
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .sidebar-overlay.show {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* Sidebar ติดตาม Mouse Position */
+.sidebar.mouse-tracking {
+    transition: transform 0.2s ease-out;
+}
+
+/* เอฟเฟกต์ Parallax สำหรับ sidebar */
+.sidebar.parallax {
+    transition: transform 0.1s ease-out;
+}
+
+/* เอฟเฟกต์ Elastic */
+.sidebar.elastic {
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Custom Scrollbar สำหรับ Sidebar */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* ==================== ADDITIONAL STYLES ==================== */
+
+/* Sidebar Shadow Effect */
+.sidebar.shadow {
+    box-shadow: 
+        2px 0 20px rgba(0, 0, 0, 0.1),
+        inset -1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Sidebar Glow Effect */
+.sidebar.glow {
+    box-shadow: 
+        2px 0 20px rgba(102, 126, 234, 0.2),
+        inset -1px 0 0 rgba(102, 126, 234, 0.1);
+}
+
+/* Smooth Color Transition */
+.sidebar.color-transition {
+    transition: all 0.3s ease, background 0.5s ease;
+}
+
+/* Different Sidebar Colors for Different Pages */
+.sidebar.time-page {
+    background: linear-gradient(180deg, #48bb78 0%, #38a169 100%);
+}
+
+.sidebar.sales-page {
+    background: linear-gradient(180deg, #ed8936 0%, #dd6b20 100%);
+}
+
+.sidebar.employees-page {
+    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+}
