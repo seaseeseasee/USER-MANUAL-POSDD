@@ -24,11 +24,11 @@ const menuItems = [
         url: 'Time.html'
     },
     {
-        id: 'troubleshooting',
+        id: 'Sales',
         icon: '💰',
         text: 'Sales Access',
         keywords: 'sales access การเข้าถึงการขาย transaction revenue billing payment checkout cashier pos terminal',
-        url: 'troubleshooting.html'
+        url: 'Sales.html'
     },
     {
         id: 'maintenance',
@@ -639,3 +639,73 @@ window.debugNavigation = function() {
 };
 
 debugLog('🔧 Debug version loaded - Use debugNavigation() for detailed info');
+// เพิ่มโค้ดนี้ท้าย script.js
+
+// ==================== SCROLL TO TOP FUNCTIONALITY ====================
+document.addEventListener('DOMContentLoaded', function() {
+    // รอให้หน้าโหลดเสร็จก่อน
+    setTimeout(initScrollToTop, 100);
+});
+
+function initScrollToTop() {
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    
+    if (!scrollToTopBtn) {
+        console.log('Scroll to top button not found');
+        return;
+    }
+    
+    // ฟังก์ชันแสดง/ซ่อนปุ่ม
+    function toggleScrollButton() {
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollPosition > 300) {
+            scrollToTopBtn.classList.add('show');
+        } else {
+            scrollToTopBtn.classList.remove('show');
+        }
+    }
+    
+    // ฟังก์ชัน Scroll to Top
+    function scrollToTop() {
+        // วิธีที่ 1: Smooth scroll (modern browsers)
+        if ('scrollBehavior' in document.documentElement.style) {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        } else {
+            // วิธีที่ 2: Animated scroll (เข้ากันได้กับ browser เก่า)
+            const currentPosition = window.pageYOffset;
+            const step = currentPosition / 20;
+            
+            function animateScroll() {
+                const newPosition = window.pageYOffset - step;
+                if (newPosition > 0) {
+                    window.scrollTo(0, newPosition);
+                    requestAnimationFrame(animateScroll);
+                } else {
+                    window.scrollTo(0, 0);
+                }
+            }
+            animateScroll();
+        }
+    }
+    
+    // Event Listeners
+    window.addEventListener('scroll', toggleScrollButton);
+    scrollToTopBtn.addEventListener('click', scrollToTop);
+    
+    // ตรวจสอบ position เริ่มต้น
+    toggleScrollButton();
+    
+    // เพิ่ม Keyboard accessibility
+    scrollToTopBtn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            scrollToTop();
+        }
+    });
+    
+    console.log('✅ Scroll to top button initialized');
+}
