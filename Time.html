@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/USER-MANUAL/img/LINE_20250612_121110 (2).ico">
+    <title>DTS CORPORATION CO.,LTD.</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/LOGO.png">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="time.css">
+</head>
+<body>
+    <div class="sidebar">
+        <!-- Logo Section -->
+        <div class="logo-container">
+            <img src="img/LOGO.png" alt="Company Logo" class="sidebar-logo">
+        </div>
+        
+        <!-- Contents Section -->
+        <h3>Contents</h3>
+        
+        <!-- Search Section -->
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="🔍 ค้นหาในคู่มือ..." id="searchInput">
+        </div>
+        
+        <!-- Menu Section -->
+        <ul id="menuList">
+            <!-- Menu items will be rendered by JavaScript -->
+        </ul>
+    </div>
+    
+    <div class="main-content">
+        <div class="breadcrumb">
+            <a href="#">Maintenance Menu Field Definitions</a> > Time Recording
+        </div>
+        
+        <div class="header-section">
+            <h2>⏰ Time Recording System</h2>
+            <p>Select Maintenance > Time & Attendance > Time Recording to access this function</p>
+        </div>
+        
+        <div class="section">
+            <p>The Time Recording system provides comprehensive tools for tracking employee work hours, attendance, and schedule management. This module ensures accurate time tracking for payroll processing, compliance reporting, and operational efficiency within the organization.</p>
+            
+            <p>Each time record contains essential information including clock-in/out times, break periods, overtime calculations, and attendance status. Proper time recording configuration is critical for maintaining accurate payroll and labor compliance.</p>
+            
+            <p>The following table shows the time recording statuses and their corresponding meanings:</p>
+        </div>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Status Code</th>
+                        <th>Description</th>
+                        <th>Time Type</th>
+                        <th>Calculation Method</th>
+                        <th>Payroll Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CLOCK_IN</td>
+                        <td>Employee Clock In</td>
+                        <td>Regular Time</td>
+                        <td>Start Time Tracking</td>
+                        <td>Begin Shift</td>
+                    </tr>
+                    <tr>
+                        <td>CLOCK_OUT</td>
+                        <td>Employee Clock Out</td>
+                        <td>Regular Time</td>
+                        <td>End Time Tracking</td>
+                        <td>Complete Shift</td>
+                    </tr>
+                    <tr>
+                        <td>BREAK_START</td>
+                        <td>Break Period Begin</td>
+                        <td>Unpaid Break</td>
+                        <td>Pause Time Tracking</td>
+                        <td>Deducted Hours</td>
+                    </tr>
+                    <tr>
+                        <td>BREAK_END</td>
+                        <td>Break Period End</td>
+                        <td>Regular Time</td>
+                        <td>Resume Time Tracking</td>
+                        <td>Resume Paid Hours</td>
+                    </tr>
+                    <tr>
+                        <td>OVERTIME</td>
+                        <td>Overtime Hours</td>
+                        <td>Overtime</td>
+                        <td>1.5x Rate Calculation</td>
+                        <td>Premium Pay</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h3>Time Recording Configuration Process</h3>
+            <ol class="config-steps">
+                <li><strong>System Setup:</strong> Configure time recording parameters including shift schedules, break periods, and overtime rules.</li>
+                <li><strong>Employee Assignment:</strong> Assign employees to appropriate time recording groups and schedule templates.</li>
+                <li><strong>Device Configuration:</strong> Set up time clocks, biometric scanners, or mobile check-in systems.</li>
+                <li><strong>Rule Definition:</strong> Define attendance policies, late arrival rules, and overtime authorization procedures.</li>
+                <li><strong>Integration Setup:</strong> Connect time recording system with payroll and HR management systems.</li>
+                <li><strong>Reporting Configuration:</strong> Configure automated reports for attendance tracking and compliance monitoring.</li>
+            </ol>
+        </div>
+        
+        <div class="section">
+            <h3>Time Management Features</h3>
+            <div class="troubleshoot-grid">
+                <div class="trouble-item">
+                    <h4>🕐 Daily Date Check</h4>
+                    <p>Before opening the store every day, the DOB and SysDate must match exactly. If the dates do not match, please contact the IT Support team immediately.</p>
+                </div>
+                <div class="trouble-item">
+                    <h4>🆔 Date Synchronization</h4>
+                    <p>Circumstances, they will be the same. However, they may differ in cases where it's past midnight or after completing the End of Day closing procedures.</p>
+                </div>
+                <div class="trouble-item">
+                    <h4>🔄 IT Support Contact</h4>
+                    <p>Phone: 083-707-2270<br>Line: @dtshelpdesk</p>
+                </div>
+                <div class="trouble-item">
+                    <h4>📋 Date Discrepancy Issues</h4>
+                    <p>If there is a date discrepancy, it may affect the timing of various processes or cause issues after the End of Day closing procedures.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Time Recording Fields Configuration</h3>
+            <div class="code-block">
+                <strong>Employee ID</strong> — Unique identifier for time record tracking (required).<br>
+                <strong>Clock In Time</strong> — Timestamp when employee starts work (required).<br>
+                <strong>Clock Out Time</strong> — Timestamp when employee ends work (required).<br>
+                <strong>Break Duration</strong> — Total break time in minutes.<br>
+                <strong>Regular Hours</strong> — Standard working hours for the shift.<br>
+                <strong>Overtime Hours</strong> — Hours worked beyond regular schedule.<br>
+                <strong>Attendance Status</strong> — Present, absent, late, or early departure.<br>
+                <strong>Location</strong> — Work location or department for tracking.<br>
+                <strong>Approval Status</strong> — Manager approval for time records.
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Attendance Tracking</h3>
+            <p>The time recording system provides comprehensive attendance monitoring to track employee punctuality, absence patterns, and schedule adherence:</p>
+            <ul class="best-practices">
+                <li>Real-time attendance monitoring with instant notifications</li>
+                <li>Automated late arrival and early departure detection</li>
+                <li>Integration with leave management and vacation tracking</li>
+                <li>Customizable attendance policies for different employee groups</li>
+                <li>Mobile app support for remote and field employees</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h3>Payroll Integration</h3>
+            <p>Seamless integration with payroll systems ensures accurate compensation calculations:</p>
+            <div class="troubleshoot-grid">
+                <div class="trouble-item">
+                    <h4>💰 Wage Calculation</h4>
+                    <p>Automatic calculation of regular hours, overtime, and shift differentials.</p>
+                </div>
+                <div class="trouble-item">
+                    <h4>📊 Reports Generation</h4>
+                    <p>Detailed timesheet reports for payroll processing and audit trails.</p>
+                </div>
+                <div class="trouble-item">
+                    <h4>🔍 Audit Controls</h4>
+                    <p>Comprehensive logging of all time record changes and approvals.</p>
+                </div>
+                <div class="trouble-item">
+                    <h4>📈 Analytics Dashboard</h4>
+                    <p>Real-time dashboard showing attendance trends and labor costs.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="alert">
+            <span class="alert-icon">⚠️</span>
+            <strong>Important:</strong> Ensure all time records are reviewed and approved before payroll processing to maintain accuracy and compliance.
+        </div>
+        
+        <div class="section">
+            <h3>Best Practices for Time Recording</h3>
+            <ul class="best-practices">
+                <li>Implement biometric or card-based systems to prevent buddy punching</li>
+                <li>Set up automated alerts for missed clock-ins or unusual time patterns</li>
+                <li>Regular calibration of time clocks to ensure accuracy</li>
+                <li>Provide employee training on proper time recording procedures</li>
+                <li>Maintain backup systems for time recording during system downtime</li>
+                <li>Regular audit of time records for compliance and accuracy</li>
+                <li>Secure access controls for time record modifications</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <strong>© Copyright - D Total Solution Co., Ltd. All Rights Reserved</strong><br>
+            <strong>"Your Satisfaction is our Quality"</strong>
+        </div>
+    </div>
+
+    <!-- กำหนดหน้าปัจจุบันก่อนโหลด script -->
+    <script>
+        window.CURRENT_PAGE = 'time-recording';
+        console.log('🎯 time.html loaded, CURRENT_PAGE set to:', window.CURRENT_PAGE);
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

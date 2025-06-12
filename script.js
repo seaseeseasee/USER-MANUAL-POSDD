@@ -2,72 +2,63 @@
 
 // Menu items data with navigation URLs
 const menuItems = [
-    { 
-        id: 'drink-dispensers', 
-        icon: '🥤', 
-        text: 'Drink Dispensers', 
-        keywords: 'drink dispensers เครื่องแจกเครื่องดื่ม ของเหลว liquor bar alcohol beverage dispenser machine equipment hardware',
+    {
+        id: 'drink-dispensers',
+        icon: '🛠️',
+        text: 'Equipment preparation',
+        keywords: 'equipment preparation เตรียมอุปกรณ์ จัดเตรียม เครื่องมือ setup installation configuration hardware machinery tools',
         url: 'index.html'
     },
-    { 
-        id: 'employees', 
-        icon: '👥', 
-        text: 'Employees', 
-        keywords: 'employees พนักงาน คน งาน staff worker personnel user account login access management',
+    {
+        id: 'employees',
+        icon: '👥',
+        text: 'System Login',
+        keywords: 'system login เข้าสู่ระบบ authentication user access credentials password username signin account portal',
         url: 'employees.html'
     },
-    { 
-        id: 'event-schedule', 
-        icon: '📅', 
-        text: 'Event Schedule', 
-        keywords: 'event schedule กิจกรรม ตารางเวลา วันที่ calendar time date appointment booking reservation',
-        url: 'event-schedule.html'
+    {
+        id: 'time-recording',
+        icon: '⏰',
+        text: 'Time Recording',
+        keywords: 'time recording บันทึกเวลา timesheet attendance clock tracking hours minutes timestamp logging',
+        url: 'time.html'
     },
     {
         id: 'troubleshooting',
-        icon: '🛠️',
-        text: 'Troubleshooting',
-        keywords: 'troubleshooting แก้ไขปัญหา support help desk issue resolution',
+        icon: '💰',
+        text: 'Sales Access',
+        keywords: 'sales access การเข้าถึงการขาย transaction revenue billing payment checkout cashier pos terminal',
         url: 'troubleshooting.html'
     },
     {
         id: 'maintenance',
-        icon: '🔧',
-        text: 'Maintenance',
-        keywords: 'maintenance บำรุงรักษา upkeep service repair cleaning inspection',
+        icon: '🧾',
+        text: 'Tax invoice issuance',
+        keywords: 'tax invoice issuance ออกใบกำกับภาษี vat receipt billing document taxation financial accounting',
         url: 'maintenance.html'
     },
     {
         id: 'settings',
-        icon: '⚙️',
-        text: 'Settings',
-        keywords: 'settings การตั้งค่า configuration options preferences customization adjustments',
+        icon: '👁️',
+        text: 'Showing details',
+        keywords: 'showing details แสดงรายละเอียด display information view data presentation visualization report summary',
         url: 'settings.html'
     },
     {
         id: 'faq',
-        icon: '❓',
-        text: 'FAQ',
-        keywords: 'faq คำถามที่พบบ่อย frequently asked questions common inquiries help support',
+        icon: '📤',
+        text: 'Exporting intraday sales files',
+        keywords: 'exporting intraday sales files ส่งออกไฟล์ขาย export data download backup csv excel report daily',
         url: 'faq.html'
     },
     {
         id: 'contact-support',
-        icon: '📞',
-        text: 'Contact Support',
-        keywords: 'contact support ติดต่อฝ่ายสนับสนุน customer service assistance help desk',
+        icon: '🔚',
+        text: 'ENDDAY SALE',
+        keywords: 'endday sale ปิดยอดขาย end of day closing summary final total daily sales closure',
         url: 'contact-support.html'
-    },
-    {
-        id: 'about-us',
-        icon: 'ℹ️',
-        text: 'About Us',
-        keywords: 'about us เกี่ยวกับเรา company information team background history mission vision',
-        url: 'about-us.html'
     }
-
 ];
-
 // State management
 let currentSearchTerm = '';
 let filteredMenuItems = [...menuItems];
