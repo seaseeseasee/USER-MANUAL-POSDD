@@ -17,11 +17,11 @@ const menuItems = [
         url: 'employees.html'
     },
     {
-        id: 'time-recording',
+        id: 'Time-recording',
         icon: '⏰',
         text: 'Time Recording',
         keywords: 'time recording บันทึกเวลา timesheet attendance clock tracking hours minutes timestamp logging',
-        url: 'time.html'
+        url: 'Time.html'
     },
     {
         id: 'troubleshooting',
