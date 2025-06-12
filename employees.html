@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employees - Configuration Manual</title>
+    <!-- Main styles -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Employee specific styles -->
+    <link rel="stylesheet" href="employees.css">
 </head>
 <body>
     <div class="sidebar">
@@ -60,89 +63,6 @@
                         <td>Voids, discounts, reports</td>
                         <td>Shift Manager</td>
                         <td>POS + Basic Reports</td>
-                    </tr>
-                    <tr>
-                        <td>Level 3</td>
-                        <td>Manager</td>
-                        <td>Full operations, configuration</td>
-                        <td>Store Manager</td>
-                        <td>All POS Functions</td>
-                    </tr>
-                    <tr>
-                        <td>Level 4</td>
-                        <td>Administrator</td>
-                        <td>System configuration, maintenance</td>
-                        <td>IT Manager</td>
-                        <td>Full System Access</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="section">
-            <h3>Employee Setup Process</h3>
-            <ol class="config-steps">
-                <li><strong>Basic Information:</strong> Enter employee personal details including name, ID, and contact information.</li>
-                <li><strong>Job Classification:</strong> Assign appropriate job codes and department classifications.</li>
-                <li><strong>Security Level:</strong> Set access level based on job responsibilities and security requirements.</li>
-                <li><strong>System Permissions:</strong> Configure specific system access rights and restrictions.</li>
-                <li><strong>Schedule Setup:</strong> Define work schedules and availability patterns.</li>
-                <li><strong>Training Records:</strong> Document completed training modules and certifications.</li>
-            </ol>
-        </div>
-        
-        <div class="section">
-            <h3>Security Considerations</h3>
-            <div class="troubleshoot-grid">
-                <div class="trouble-item">
-                    <h4>🔐 Access Control</h4>
-                    <p>Implement role-based access control to ensure employees can only access functions appropriate to their position.</p>
-                </div>
-                <div class="trouble-item">
-                    <h4>🆔 Employee IDs</h4>
-                    <p>Use unique, non-sequential employee IDs to enhance security and prevent unauthorized access attempts.</p>
-                </div>
-                <div class="trouble-item">
-                    <h4>🔄 Regular Reviews</h4>
-                    <p>Conduct periodic reviews of employee access levels and permissions, especially after role changes.</p>
-                </div>
-                <div class="trouble-item">
-                    <h4>📋 Audit Trails</h4>
-                    <p>Maintain comprehensive logs of employee activities for security auditing and compliance.</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="section">
-            <h3>Employee Fields Configuration</h3>
-            <div class="code-block">
-                <strong>Employee ID</strong> — Unique identifier for each employee (required).<br>
-                <strong>First Name</strong> — Employee's first name (required).<br>
-                <strong>Last Name</strong> — Employee's last name (required).<br>
-                <strong>Job Code</strong> — Classification code for the employee's position.<br>
-                <strong>Department</strong> — Department or area assignment.<br>
-                <strong>Access Level</strong> — Security clearance level (1-4).<br>
-                <strong>PIN/Password</strong> — Authentication credentials for system access.<br>
-                <strong>Hire Date</strong> — Date of employment start.<br>
-                <strong>Status</strong> — Active, inactive, or terminated status.
-            </div>
-        </div>
-        
-        <div class="alert">
-            <span class="alert-icon">⚠️</span>
-            <strong>Important:</strong> Always verify employee access levels match their job responsibilities and remove access immediately when employment ends.
-        </div>
-        
-        <div class="footer">
-            Copyright © 2013 - 2021 NCR Corporation - All rights reserved<br>
-            Send feedback on this topic to: <a href="mailto:Documentation.HSR@NCR.com">Documentation.HSR@NCR.com</a>
-        </div>
-    </div>
-
-    
-  
-
-<<td>POS + Basic Reports</td>
                     </tr>
                     <tr>
                         <td>Level 3</td>
@@ -270,13 +190,10 @@
         </div>
     </div>
 
-    <!-- เพิ่ม script สำหรับกำหนดหน้าปัจจุบัน -->
-     
     <!-- กำหนดหน้าปัจจุบันก่อนโหลด script -->
     <script>
         window.CURRENT_PAGE = 'employees';
         console.log('🎯 employees.html loaded, CURRENT_PAGE set to:', window.CURRENT_PAGE);
-
     </script>
     <script src="script.js"></script>
 </body>

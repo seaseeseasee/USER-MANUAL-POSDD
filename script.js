@@ -22,7 +22,50 @@ const menuItems = [
         text: 'Event Schedule', 
         keywords: 'event schedule กิจกรรม ตารางเวลา วันที่ calendar time date appointment booking reservation',
         url: 'event-schedule.html'
+    },
+    {
+        id: 'troubleshooting',
+        icon: '🛠️',
+        text: 'Troubleshooting',
+        keywords: 'troubleshooting แก้ไขปัญหา support help desk issue resolution',
+        url: 'troubleshooting.html'
+    },
+    {
+        id: 'maintenance',
+        icon: '🔧',
+        text: 'Maintenance',
+        keywords: 'maintenance บำรุงรักษา upkeep service repair cleaning inspection',
+        url: 'maintenance.html'
+    },
+    {
+        id: 'settings',
+        icon: '⚙️',
+        text: 'Settings',
+        keywords: 'settings การตั้งค่า configuration options preferences customization adjustments',
+        url: 'settings.html'
+    },
+    {
+        id: 'faq',
+        icon: '❓',
+        text: 'FAQ',
+        keywords: 'faq คำถามที่พบบ่อย frequently asked questions common inquiries help support',
+        url: 'faq.html'
+    },
+    {
+        id: 'contact-support',
+        icon: '📞',
+        text: 'Contact Support',
+        keywords: 'contact support ติดต่อฝ่ายสนับสนุน customer service assistance help desk',
+        url: 'contact-support.html'
+    },
+    {
+        id: 'about-us',
+        icon: 'ℹ️',
+        text: 'About Us',
+        keywords: 'about us เกี่ยวกับเรา company information team background history mission vision',
+        url: 'about-us.html'
     }
+
 ];
 
 // State management
