@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="img/LINE_20250612_121110 (2).ico">
+    <title>DTS CORPORATION CO.,LTD.</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <div class="sidebar">
+        <!-- Logo Section -->
+        <div class="logo-container">
+            <img src="img/LOGO.png" alt="Company Logo" class="logo">
+        </div>
+        
+        <!-- Search Section -->
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="🔍 ค้นหาในคู่มือ..." id="searchInput">
+        </div>
+        
+        <!-- Menu Section -->
+        <ul id="menuList">
+            <!-- Menu items will be rendered by JavaScript -->
+        </ul>
+    </div>
+    
+    <div class="main-content">
+        <div class="header-section">
+            <h2>Showing details of the buttons </h2>
+        </div>
+        <br>
+        <div class="section">
+            <img src="img/show/1.png" alt="Time Recording Interface" class="feature-image">
+        </div>
+        <div class="section">
+            <h3>Showing details of the buttons  </h3>
+            <ol class="config-steps">If the buttons do not display details, you can press the SHOW CAPTION button to display details as shown in the following image.
+
+            </ol>
+        </div>
+        <div class="section">
+            <img src="img/show/2.png" alt="Time Recording Interface" class="feature-image">
+        </div>
+        <div class="section">
+            <h3>Showing details of the buttons  </h3>
+          
+            <ol class="config-steps">
+                The button will display details as shown in the image.
+            </ol>
+        </div>
+          
+        <div class="footer">
+            © Copyright - D Total Solution Co., Ltd. All Rights Reserved<br>
+            <strong>"Your Satisfaction is our Quality"</strong>
+        </div>
+    </div>
+
+    <button id="scrollToTopBtn" class="scroll-to-top" title="กลับขึ้นด้านบน">
+        <i class="scroll-icon">⬆️</i>
+    </button>
+
+    <!-- กำหนดหน้าปัจจุบันก่อนโหลด script -->
+    <script>
+        window.CURRENT_PAGE = 'show';
+        console.log('🎯 show.html loaded, CURRENT_PAGE set to:', window.CURRENT_PAGE);
+    </script>
+    <script src="script.js"></script>
+    
+</body>
+</html>

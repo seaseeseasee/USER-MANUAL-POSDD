@@ -31,32 +31,32 @@ const menuItems = [
         url: 'Sales.html'
     },
     {
-        id: 'maintenance',
+        id: 'tax',
         icon: '🧾',
         text: 'Tax invoice issuance',
         keywords: 'tax invoice issuance ออกใบกำกับภาษี vat receipt billing document taxation financial accounting',
-        url: 'maintenance.html'
+        url: 'tax.html'
     },
     {
-        id: 'settings',
+        id: 'show',
         icon: '👁️',
         text: 'Showing details',
         keywords: 'showing details แสดงรายละเอียด display information view data presentation visualization report summary',
-        url: 'settings.html'
+        url: 'show.html'
     },
     {
-        id: 'faq',
+        id: 'export',
         icon: '📤',
         text: 'Exporting intraday sales files',
         keywords: 'exporting intraday sales files ส่งออกไฟล์ขาย export data download backup csv excel report daily',
-        url: 'faq.html'
+        url: 'export.html'
     },
     {
-        id: 'contact-support',
+        id: 'endday',
         icon: '🔚',
         text: 'ENDDAY SALE',
         keywords: 'endday sale ปิดยอดขาย end of day closing summary final total daily sales closure',
-        url: 'contact-support.html'
+        url: 'endday.html'
     }
 ];
 // State management
