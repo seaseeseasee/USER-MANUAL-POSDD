@@ -10,7 +10,7 @@
 }
 
 .table-container th {
-    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     font-weight: 600;
     text-transform: uppercase;
@@ -204,7 +204,7 @@
 
 /* Time header section customization */
 .header-section {
-    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     padding: 32px 30px;
     margin-bottom: 0;
 }

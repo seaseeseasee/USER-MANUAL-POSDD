@@ -13,15 +13,25 @@ body {
 }
 
 /* Enhanced Sidebar */
-.sidebar {
+ .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
     width: 280px;
-    background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
-    color: white;
-    padding: 25px 0;
-    overflow-y: auto;
-    box-shadow: 4px 0 20px rgba(0,0,0,0.2);
+    height: 100vh;
+    background: linear-gradient(180deg, #4a5568 0%, #2d3748 100%) !important;
     backdrop-filter: blur(10px);
-    border-right: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+    color: white;
+    padding: 20px 0;
+    transform: translateX(0);
+}
+
+.sidebar.collapsed {
+    width: 70px;
 }
 
 .sidebar h3 {
@@ -538,23 +548,272 @@ tr:hover {
     }
 }
 /* ปรับขนาด logo ให้พอดี */
-.logo {
-    max-width: 250px;        /* จำกัดความกว้างสูงสุด */
-    max-height: 125px;        /* จำกัดความสูงสูงสุด */
-    width: auto;             /* ให้ปรับตามอัตราส่วน */
-    height: auto;            /* ให้ปรับตามอัตราส่วน */
-    object-fit: contain;     /* รักษาอัตราส่วนเดิม */
-    display: block;          /* แสดงเป็น block */
-    margin: 0 auto 20px;     /* จัดกึ่งกลางและเว้นระยะล่าง */
+/* ==================== FORCE LARGE LOGO - OVERRIDE ALL ==================== */
+
+/* บังคับขนาดโลโก้ให้ใหญ่ - ใช้ !important เพื่อ override CSS เก่า */
+.logo,
+.sidebar-logo,
+img.logo,
+.logo-container img,
+.sidebar .logo,
+.sidebar .sidebar-logo,
+.sidebar img {
+    max-width: 180px !important;      /* บังคับความกว้างสูงสุด */
+    max-height: 120px !important;     /* บังคับความสูงสูงสุด */
+    width: 180px !important;          /* บังคับความกว้าง */
+    height: auto !important;          /* ให้ความสูงปรับตาม */
+    object-fit: contain !important;   /* รักษาอัตราส่วน */
+    display: block !important;        /* แสดงเป็น block */
+    margin: 0 auto 20px !important;   /* จัดกึ่งกลาง */
+    transition: all 0.3s ease !important;
+    border-radius: 8px !important;
 }
 
-/* Container สำหรับ logo */
-.logo-container {
-    text-align: center;
-    padding: 15px 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 15px;
+/* Container สำหรับโลโก้ */
+.logo-container,
+.sidebar .logo-container {
+    text-align: center !important;
+    padding: 25px 15px !important;    /* เพิ่ม padding */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    margin-bottom: 20px !important;
+    min-height: 160px !important;     /* บังคับความสูงขั้นต่ำ */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
+
+/* หากไม่มี logo-container ให้สร้างพื้นที่ */
+.sidebar {
+    padding-top: 20px !important;
+}
+
+/* ==================== SPECIFIC SELECTORS FOR OVERRIDE ==================== */
+
+/* Override ทุก selector ที่เป็นไปได้ */
+nav.sidebar img,
+.sidebar nav img,
+div.sidebar img,
+aside.sidebar img,
+section.sidebar img,
+.menu-logo,
+.brand-logo,
+.company-logo,
+#logo,
+#sidebar-logo,
+.header-logo {
+    max-width: 250px !important;
+    max-height: 150px !important;
+    width: 180px !important;
+    height: auto !important;
+    object-fit: contain !important;
+    margin: 0 auto 20px !important;
+}
+
+/* ==================== RESPONSIVE LARGE LOGO ==================== */
+
+/* Large Desktop (1200px+) - โลโก้ใหญ่สุด */
+@media (min-width: 1200px) {
+    .logo,
+    .sidebar-logo,
+    .sidebar img {
+        max-width: 220px !important;
+        max-height: 150px !important;
+        width: 220px !important;
+    }
+    
+    .logo-container {
+        min-height: 190px !important;
+        padding: 30px 20px !important;
+    }
+}
+
+/* Medium Desktop (992px - 1199px) */
+@media (max-width: 1199px) and (min-width: 992px) {
+    .logo,
+    .sidebar-logo,
+    .sidebar img {
+        max-width: 200px !important;
+        max-height: 130px !important;
+        width: 200px !important;
+    }
+    
+    .logo-container {
+        min-height: 170px !important;
+        padding: 25px 18px !important;
+    }
+}
+
+/* Small Desktop/Large Tablet (768px - 991px) */
+@media (max-width: 991px) and (min-width: 768px) {
+    .logo,
+    .sidebar-logo,
+    .sidebar img {
+        max-width: 180px !important;
+        max-height: 120px !important;
+        width: 180px !important;
+    }
+    
+    .logo-container {
+        min-height: 160px !important;
+        padding: 20px 15px !important;
+    }
+}
+
+/* Mobile (768px และต่ำกว่า) */
+@media (max-width: 768px) {
+    .logo,
+    .sidebar-logo,
+    .sidebar img {
+        max-width: 160px !important;
+        max-height: 100px !important;
+        width: 160px !important;
+    }
+    
+    .logo-container {
+        min-height: 140px !important;
+        padding: 18px 12px !important;
+    }
+}
+
+/* Mobile Small (480px และต่ำกว่า) */
+@media (max-width: 480px) {
+    .logo,
+    .sidebar-logo,
+    .sidebar img {
+        max-width: 140px !important;
+        max-height: 90px !important;
+        width: 140px !important;
+    }
+    
+    .logo-container {
+        min-height: 120px !important;
+        padding: 15px 10px !important;
+    }
+}
+
+/* ==================== SIDEBAR COLLAPSED STATE OVERRIDE ==================== */
+
+@media (min-width: 769px) {
+    /* เมื่อ sidebar หด - โลโก้เล็กลง */
+    .sidebar.collapsed .logo,
+    .sidebar.collapsed .sidebar-logo,
+    .sidebar.collapsed img {
+        max-width: 45px !important;
+        max-height: 45px !important;
+        width: 45px !important;
+        margin: 0 auto 10px !important;
+    }
+    
+    .sidebar.collapsed .logo-container {
+        min-height: 70px !important;
+        padding: 10px 5px !important;
+    }
+    
+    /* เมื่อ hover ที่ sidebar ที่หด */
+    .sidebar.collapsed:hover .logo,
+    .sidebar.collapsed:hover .sidebar-logo,
+    .sidebar.collapsed:hover img {
+        max-width: 160px !important;
+        max-height: 110px !important;
+        width: 160px !important;
+        margin: 0 auto 15px !important;
+        transition: all 0.3s ease 0.1s !important;
+    }
+    
+    .sidebar.collapsed:hover .logo-container {
+        min-height: 150px !important;
+        padding: 20px 12px !important;
+        transition: all 0.3s ease 0.1s !important;
+    }
+}
+
+/* ==================== HOVER EFFECTS ==================== */
+
+.logo:hover,
+.sidebar-logo:hover,
+.sidebar img:hover {
+    transform: scale(1.05) !important;
+    filter: brightness(1.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* ==================== LOADING & ERROR STATES ==================== */
+
+/* โลโก้กำลังโหลด */
+.logo-loading,
+.sidebar img[src=""],
+.sidebar img:not([src]) {
+    width: 180px !important;
+    height: 120px !important;
+    background: linear-gradient(90deg, 
+        rgba(255,255,255,0.1) 25%, 
+        rgba(255,255,255,0.2) 50%, 
+        rgba(255,255,255,0.1) 75%) !important;
+    background-size: 200% 100% !important;
+    animation: logoLoading 2s infinite !important;
+    border-radius: 8px !important;
+    margin: 0 auto 20px !important;
+    display: block !important;
+}
+
+@keyframes logoLoading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ==================== FALLBACK METHODS ==================== */
+
+/* ถ้าไม่มี class logo ให้ target img ใน sidebar โดยตรง */
+.sidebar > div:first-child img,
+.sidebar > div:nth-child(1) img,
+.sidebar header img,
+.sidebar .brand img {
+    max-width: 180px !important;
+    max-height: 120px !important;
+    width: 180px !important;
+    height: auto !important;
+    object-fit: contain !important;
+    margin: 0 auto 20px !important;
+    display: block !important;
+}
+
+/* ==================== JAVASCRIPT FALLBACK ==================== */
+
+/* สำหรับกรณีที่ CSS ไม่ทำงาน */
+.force-large-logo {
+    max-width: 180px !important;
+    max-height: 120px !important;
+    width: 180px !important;
+    height: auto !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 0 auto 20px !important;
+}
+
+/* ==================== PRINT OVERRIDE ==================== */
+
+@media print {
+    .logo,
+    .sidebar-logo,
+    .sidebar img {
+        max-width: 120px !important;
+        max-height: 80px !important;
+        width: 120px !important;
+    }
+}
+
+/* ==================== DEBUG STYLES (ลบออกได้เมื่อเสร็จ) ==================== */
+
+
+
+/* หลังจากใช้แล้วให้ลบส่วนนี้ออก
+.logo,
+.sidebar-logo,
+.sidebar img {
+    border: none !important;
+    background: transparent !important;
+}
+*/
 /* สำหรับหน้าจอขนาดกลาง */
 @media (max-width: 1024px) {
     .logo {
@@ -821,25 +1080,44 @@ tr:hover {
 }
 
 /* ปุ่มขยาย/หด sidebar */
+/* Toggle Button */
 .sidebar-toggle {
     position: fixed;
     top: 20px;
-    left: 260px; /* วางหลัง sidebar */
+    left: 290px;
     width: 40px;
     height: 40px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #4a5568 !important;
     color: white;
     border: none;
     border-radius: 0 8px 8px 0;
     cursor: pointer;
     font-size: 16px;
-    z-index: 1000;
+    z-index: 1001;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+/* เมื่อ sidebar ปิด */
+.sidebar-toggle.collapsed {
+    transform: translateX(20px); /* เลื่อนกลับไปที่ขอบซ้าย */
+}
+
+/* สำหรับ responsive */
+@media (max-width: 768px) {
+    .sidebar-toggle {
+        left: 0;
+        top: 10px;
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+}
+
 
 .sidebar-toggle:hover {
     background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
@@ -864,8 +1142,16 @@ tr:hover {
 }
 
 .sidebar.collapsed .sidebar-logo {
-    max-width: 30px;
-    max-height: 30px;
+
+    max-width: 320px;        /* เพิ่มขนาดใน sidebar */
+    max-height: 250px;       /* เพิ่มขนาดใน sidebar */
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+    border-radius: 8px;
 }
 
 /* Hover เพื่อขยาย sidebar ชั่วคราว */
@@ -983,15 +1269,304 @@ tr:hover {
     transition: all 0.3s ease, background 0.5s ease;
 }
 
-/* Different Sidebar Colors for Different Pages */
-.sidebar.time-page {
-    background: linear-gradient(180deg, #48bb78 0%, #38a169 100%);
+/* Large Desktop (1200px+) - Full Sidebar */
+@media (min-width: 1200px) {
+    .sidebar {
+        width: 280px;
+    }
+    
+    .main-content {
+        margin-left: 280px;
+    }
+    
+    .sidebar-toggle {
+        left: 290px;
+    }
+    
+    .logo,
+    .sidebar-logo {
+        max-width: 100px;
+        max-height: 50px;
+    }
 }
 
-.sidebar.sales-page {
-    background: linear-gradient(180deg, #ed8936 0%, #dd6b20 100%);
+/* Medium Desktop (992px - 1199px) - Slightly Smaller */
+@media (max-width: 1199px) and (min-width: 992px) {
+    .sidebar {
+        width: 250px;
+    }
+    
+    .main-content {
+        margin-left: 250px;
+    }
+    
+    .sidebar-toggle {
+        left: 260px;
+    }
+    
+    .logo,
+    .sidebar-logo {
+        max-width: 90px;
+        max-height: 45px;
+    }
+    
+    .sidebar h3 {
+        font-size: 18px;
+    }
+    
+    .sidebar a {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
 }
 
-.sidebar.employees-page {
-    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+/* Small Desktop/Large Tablet (768px - 991px) - Compact Sidebar */
+@media (max-width: 991px) and (min-width: 768px) {
+    .sidebar {
+        width: 220px;
+    }
+    
+    .main-content {
+        margin-left: 220px;
+        padding: 25px;
+    }
+    
+    .sidebar-toggle {
+        left: 230px;
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+    
+    .logo,
+    .sidebar-logo {
+        max-width: 80px;
+        max-height: 40px;
+    }
+    
+    .sidebar h3 {
+        font-size: 16px;
+        padding: 0 20px 15px;
+    }
+    
+    .sidebar a {
+        padding: 8px 20px;
+        font-size: 12px;
+    }
+    
+    .search-container {
+        padding: 0 20px 15px;
+    }
+    
+    .search-box {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+}
+
+/* ==================== TABLET RESPONSIVE (768px และต่ำกว่า) ==================== */
+
+@media (max-width: 768px) {
+    /* Sidebar เปลี่ยนเป็น Overlay */
+    .sidebar {
+        width: 280px;
+        transform: translateX(-100%);
+        z-index: 1001;
+        background: linear-gradient(180deg, #4a5568 0%, #2d3748 100%) !important;
+        box-shadow: 4px 0 30px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Sidebar เปิด */
+    .sidebar.mobile-open {
+        transform: translateX(0);
+    }
+    
+    /* Main Content ไม่เว้นที่ */
+    .main-content {
+        margin-left: 0;
+        margin: 10px;
+        padding: 20px;
+        border-radius: 15px;
+    }
+    
+    /* Toggle Button ย้ายไปมุมซ้ายบน */
+    .sidebar-toggle {
+        left: 20px;
+        top: 20px;
+        border-radius: 8px;
+        background: rgba(74, 85, 104, 0.9) !important;
+        backdrop-filter: blur(10px);
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+    
+    /* เมื่อ Sidebar เปิด Toggle เลื่อนออกไป */
+    .sidebar.mobile-open ~ .main-content .sidebar-toggle,
+    .sidebar-toggle.sidebar-open {
+        left: 300px;
+        transition: left 0.3s ease;
+    }
+    
+    /* Overlay สำหรับปิด Sidebar */
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .sidebar-overlay.show {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* ปรับขนาดเนื้อหาใน Sidebar */
+    .logo,
+    .sidebar-logo {
+        max-width: 70px;
+        max-height: 35px;
+    }
+    
+    .sidebar h3 {
+        font-size: 16px;
+    }
+    
+    .sidebar a {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+}
+
+/* ==================== MOBILE RESPONSIVE (480px และต่ำกว่า) ==================== */
+
+@media (max-width: 480px) {
+    /* Sidebar เต็มจอ */
+    .sidebar {
+        width: 100%;
+    }
+    
+    .main-content {
+        margin: 5px;
+        padding: 15px;
+        border-radius: 10px;
+    }
+    
+    .sidebar-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        top: 15px;
+        left: 15px;
+    }
+    
+    .sidebar.mobile-open ~ .main-content .sidebar-toggle,
+    .sidebar-toggle.sidebar-open {
+        left: calc(100% - 60px);
+    }
+    
+    .logo,
+    .sidebar-logo {
+        max-width: 60px;
+        max-height: 30px;
+    }
+    
+    .logo-container {
+        padding: 10px 8px;
+        margin-bottom: 10px;
+    }
+    
+    .sidebar h3 {
+        font-size: 14px;
+        padding: 0 15px 10px;
+    }
+    
+    .sidebar a {
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+    
+    .search-container {
+        padding: 0 15px 10px;
+    }
+    
+    .search-box {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+}
+
+/* ==================== COLLAPSED STATE (Desktop Only) ==================== */
+
+@media (min-width: 769px) {
+    .sidebar.collapsed {
+        width: 70px;
+        overflow: visible;
+    }
+    
+    .sidebar.collapsed .main-content {
+        margin-left: 70px;
+    }
+    
+    .sidebar.collapsed .sidebar-toggle {
+        left: 80px;
+    }
+    
+    .sidebar.collapsed .logo,
+    .sidebar.collapsed .sidebar-logo {
+        max-width: 40px;
+        max-height: 40px;
+    }
+    
+    .sidebar.collapsed .logo-container {
+        padding: 10px 5px;
+    }
+    
+    .sidebar.collapsed h3,
+    .sidebar.collapsed .search-container {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+    
+    .sidebar.collapsed a {
+        padding: 10px 5px;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .sidebar.collapsed a span:not(.icon) {
+        display: none;
+    }
+    
+    /* Hover เพื่อขยาย Sidebar ชั่วคราว */
+    .sidebar.collapsed:hover {
+        width: 250px;
+        z-index: 1002;
+        box-shadow: 4px 0 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .sidebar.collapsed:hover h3,
+    .sidebar.collapsed:hover .search-container {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition: all 0.3s ease 0.1s;
+    }
+    
+    .sidebar.collapsed:hover a {
+        padding: 10px 20px;
+        text-align: left;
+        justify-content: flex-start;
+    }
+    
+    .sidebar.collapsed:hover a span:not(.icon) {
+        display: inline;
+    }
 }
