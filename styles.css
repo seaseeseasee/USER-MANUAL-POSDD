@@ -271,9 +271,9 @@ img.logo,
 }
 
 .header-section h2 {
-    font-size: 32px;
+    font-size: 40px;
     margin-bottom: 15px;
-    font-weight: 700;
+    font-weight: 200;
     position: relative;
     z-index: 1;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
