@@ -4,56 +4,56 @@
 const menuItems = [
     {
         id: 'drink-dispensers',
-        
+        icon: '',
         text: 'Equipment preparation',
         keywords: 'equipment preparation เตรียมอุปกรณ์ จัดเตรียม เครื่องมือ setup installation configuration hardware machinery tools',
         url: 'index.html'
     },
     {
         id: 'employees',
-        
+        icon: '',
         text: 'System Login',
         keywords: 'system login เข้าสู่ระบบ authentication user access credentials password username signin account portal',
         url: 'employees.html'
     },
     {
         id: 'Time-recording',
-        
+        icon: '',
         text: 'Time Recording',
         keywords: 'time recording บันทึกเวลา timesheet attendance clock tracking hours minutes timestamp logging',
         url: 'Time.html'
     },
     {
         id: 'Sales',
-      
+        icon: '',
         text: 'Sales Access',
         keywords: 'sales access การเข้าถึงการขาย transaction revenue billing payment checkout cashier pos terminal',
         url: 'Sales.html'
     },
     {
         id: 'tax',
-       
+        icon: '',
         text: 'Tax invoice issuance',
         keywords: 'tax invoice issuance ออกใบกำกับภาษี vat receipt billing document taxation financial accounting',
         url: 'tax.html'
     },
     {
         id: 'show',
-       
+        icon: '',
         text: 'Showing details',
         keywords: 'showing details แสดงรายละเอียด display information view data presentation visualization report summary',
         url: 'show.html'
     },
     {
         id: 'export',
-        
+        icon: '',
         text: 'Exporting intraday sales files',
         keywords: 'exporting intraday sales files ส่งออกไฟล์ขาย export data download backup csv excel report daily',
         url: 'export.html'
     },
     {
         id: 'endday',
-        
+        icon: '',
         text: 'ENDDAY SALE',
         keywords: 'endday sale ปิดยอดขาย end of day closing summary final total daily sales closure',
         url: 'endday.html'
@@ -572,23 +572,13 @@ function addAnimationStyles() {
                 }
             }
             
-            .sidebar a.loading {
-                opacity: 0.6;
-                pointer-events: none;
-                background-color: rgba(255,255,255,0.1);
-            }
-            
-            .sidebar a.loading::after {
-                content: " 🔄";
-                animation: spin 1s linear infinite;
-            }
-            
+           
             .highlight {
-                background: linear-gradient(120deg, #fff3cd 0%, #ffeaa7 100%);
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
                 padding: 2px 4px;
                 border-radius: 3px;
                 font-weight: bold;
-                color: #856404;
+                color:rgb(3, 3, 0);
             }
         `;
         document.head.appendChild(style);
@@ -1244,4 +1234,68 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+});
+// ==================== วิธีที่ 3: ใช้ JavaScript ลบเอฟเฟกต์ ==================== //
+
+// เพิ่มในไฟล์ script.js หรือใน <script> tag
+
+document.addEventListener('DOMContentLoaded', function() {
+    // ลบเอฟเฟกต์ทั้งหมดจากเมนู
+    disableMenuEffects();
+});
+
+function disableMenuEffects() {
+    const menuLinks = document.querySelectorAll('.sidebar a');
+    
+    menuLinks.forEach(link => {
+        // ลบ CSS properties
+        link.style.transition = 'none';
+        link.style.transform = 'none';
+        link.style.background = 'transparent';
+        link.style.borderLeft = 'none';
+        link.style.border = 'none';
+        
+        // ลบ event listeners เดิม (ถ้ามี)
+        link.removeEventListener('mouseenter', null);
+        link.removeEventListener('mouseleave', null);
+        
+        // เพิ่ม event listeners ใหม่ที่ไม่มีเอฟเฟกต์
+        link.addEventListener('mouseenter', function() {
+            // ไม่ทำอะไร หรือทำสิ่งที่ต้องการ
+            console.log('Hover on:', this.textContent);
+        });
+        
+        link.addEventListener('click', function() {
+            // ลบ active class จากทุก link
+            menuLinks.forEach(l => l.classList.remove('active'));
+            
+            // ไม่เพิ่ม active class - หรือเพิ่มแบบไม่มีสไตล์
+            // this.classList.add('active'); // ไม่ใช้บรรทัดนี้
+            
+            console.log('Clicked on:', this.textContent);
+        });
+    });
+    
+    console.log('✅ All menu effects disabled');
+}
+
+// ฟังก์ชันลบ active state จากทุกเมนู
+function removeAllActiveStates() {
+    const menuLinks = document.querySelectorAll('.sidebar a');
+    menuLinks.forEach(link => {
+        link.classList.remove('active');
+        link.style.background = 'transparent';
+        link.style.color = 'rgba(255,255,255,0.8)';
+        link.style.fontWeight = '500';
+        link.style.borderLeft = 'none';
+    });
+}
+
+// เรียกใช้ฟังก์ชันลบ active state
+removeAllActiveStates();
+
+// Re-apply หลังจาก page load เพื่อให้แน่ใจ
+window.addEventListener('load', function() {
+    setTimeout(disableMenuEffects, 100);
+    setTimeout(removeAllActiveStates, 200);
 });
