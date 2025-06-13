@@ -4,56 +4,56 @@
 const menuItems = [
     {
         id: 'drink-dispensers',
-        icon: '🛠️',
+        
         text: 'Equipment preparation',
         keywords: 'equipment preparation เตรียมอุปกรณ์ จัดเตรียม เครื่องมือ setup installation configuration hardware machinery tools',
         url: 'index.html'
     },
     {
         id: 'employees',
-        icon: '👥',
+        
         text: 'System Login',
         keywords: 'system login เข้าสู่ระบบ authentication user access credentials password username signin account portal',
         url: 'employees.html'
     },
     {
         id: 'Time-recording',
-        icon: '⏰',
+        
         text: 'Time Recording',
         keywords: 'time recording บันทึกเวลา timesheet attendance clock tracking hours minutes timestamp logging',
         url: 'Time.html'
     },
     {
         id: 'Sales',
-        icon: '💰',
+      
         text: 'Sales Access',
         keywords: 'sales access การเข้าถึงการขาย transaction revenue billing payment checkout cashier pos terminal',
         url: 'Sales.html'
     },
     {
         id: 'tax',
-        icon: '🧾',
+       
         text: 'Tax invoice issuance',
         keywords: 'tax invoice issuance ออกใบกำกับภาษี vat receipt billing document taxation financial accounting',
         url: 'tax.html'
     },
     {
         id: 'show',
-        icon: '👁️',
+       
         text: 'Showing details',
         keywords: 'showing details แสดงรายละเอียด display information view data presentation visualization report summary',
         url: 'show.html'
     },
     {
         id: 'export',
-        icon: '📤',
+        
         text: 'Exporting intraday sales files',
         keywords: 'exporting intraday sales files ส่งออกไฟล์ขาย export data download backup csv excel report daily',
         url: 'export.html'
     },
     {
         id: 'endday',
-        icon: '🔚',
+        
         text: 'ENDDAY SALE',
         keywords: 'endday sale ปิดยอดขาย end of day closing summary final total daily sales closure',
         url: 'endday.html'
