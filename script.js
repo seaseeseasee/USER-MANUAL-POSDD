@@ -65,152 +65,191 @@ const menuItems = [
         type: 'submenu'
     },
      {
-        id: 'sales-access-and-opening-sales', // ตั้งเป็นเมนูหลักรวม
+        id: 'sales-access-and-opening-sales',
         icon: '',
         text: 'Sales Access and Opening Sales',
         keywords: 'sales access opening sales การเข้าถึงการขาย การเปิดขาย',
-        url: 'Sales.html', // อาจจะลิงก์ไปหน้า Sales หลัก หรือไม่มี URL ถ้าเป็นแค่หัวข้อ
-        children: [
-            {
-                id: '1',
-                icon: '',
-                text: 'Adding Change Money to set Cashier Permissions',
-                keywords: 'adding change money set cashier permissions เพิ่มเงินทอน ตั้งค่าสิทธิ์แคชเชียร์',
-                url: 'Sales.html#1'
-            },
-            {
-                id: '2',
-                icon: '',
-                text: 'ORDER PROCESSING',
-                keywords: 'order processing กระบวนการสั่งซื้อ',
-                url: 'Sales.html#2',
-                children: [
-                    {
-                        id: '2.1',
-                        icon: '',
-                        text: 'New Order Processing',
-                        keywords: 'new order processing กระบวนการสั่งซื้อใหม่',
-                        url: 'Sales.html#2.1'
-                    },
-                    {
-                        id: '2.2',
-                        icon: '',
-                        text: 'Customer Type Selection - DINE IN OR TAKE AWAY',
-                        keywords: 'customer type selection dine in take away เลือกประเภทลูกค้า ทานที่ร้าน กลับบ้าน',
-                        url: 'Sales.html#2.2'
-                    }
-                ]
-            },
-            {
-                id: '3',
-                icon: '',
-                text: 'PAYMENT PROCESSING',
-                keywords: 'payment processing กระบวนการชำระเงิน',
-                url: 'Sales.html#3',
-                children: [
-                    {
-                        id: '3.1',
-                        icon: '',
-                        text: 'Cash Payment Processing',
-                        keywords: 'cash payment processing ชำระเงินสด',
-                        url: 'Sales.html#3.1'
-                    },
-                    {
-                        id: '3.2',
-                        icon: '',
-                        text: 'Exact Amount Payment Processing',
-                        keywords: 'exact amount payment processing ชำระเงินตรงจำนวน',
-                        url: 'Sales.html#3.2'
-                    },
-                    {
-                        id: '3.3',
-                        icon: '',
-                        text: 'Credit Card Payment Processing',
-                        keywords: 'credit card payment processing ชำระด้วยบัตรเครดิต',
-                        url: 'Sales.html#3.3'
-                    },
-                    {
-                        id: '3.4',
-                        icon: '',
-                        text: 'Cash Payment Processing Based on Received Amount',
-                        keywords: 'cash payment received amount ชำระเงินสดตามจำนวนที่ได้รับ',
-                        url: 'Sales.html#3.4'
-                    },
-                    {
-                        id: '3.5',
-                        icon: '',
-                        text: 'In cases where the customer wants to pay partially with cash and complete the payment with a credit card',
-                        keywords: 'partial payment cash credit card ชำระบางส่วน เงินสด บัตรเครดิต',
-                        url: 'Sales.html#3.5'
-                    }
-                ]
-            },
-            {
-                id: '4',
-                icon: '',
-                text: 'VOID ORDER - AFTER BILL COMPLETION',
-                keywords: 'void order ยกเลิกออเดอร์ หลังพิมพ์บิล',
-                url: 'Sales.html#4'
-            },
-            {
-                id: '5',
-                icon: '',
-                text: 'CHECK HOURLY SALES FIGURES',
-                keywords: 'check hourly sales figures ตรวจสอบยอดขายรายชั่วโมง',
-                url: 'Sales.html#5'
-            },
-            {
-                id: '6',
-                icon: '',
-                text: 'CLOSING SALES DURING THE DAY',
-                keywords: 'closing sales during day ปิดยอดขายระหว่างวัน',
-                url: 'Sales.html#6'
-            },
-            {
-                id: '7',
-                icon: '',
-                text: 'Using Additional Functions',
-                keywords: 'using additional functions ใช้ฟังก์ชันเพิ่มเติม',
-                url: 'Sales.html#7',
-                children: [
-                    {
-                        id: '7.1',
-                        icon: '',
-                        text: 'CLOSE SHIFT REPRINT',
-                        keywords: 'close shift reprint พิมพ์ซ้ำปิดกะ',
-                        url: 'Sales.html#7.1'
-                    },
-                    {
-                        id: '7.2',
-                        icon: '',
-                        text: 'Active SHIFT REPRINT',
-                        keywords: 'active shift reprint พิมพ์ซ้ำกะปัจจุบัน',
-                        url: 'Sales.html#7.2'
-                    },
-                    {
-                        id: '7.3',
-                        icon: '',
-                        text: 'ENDDAY REPRINT',
-                        keywords: 'endday reprint พิมพ์ซ้ำปิดวัน',
-                        url: 'Sales.html#7.3'
-                    },
-                    {
-                        id: '7.4',
-                        icon: '',
-                        text: 'ENDDAY NOTIFY',
-                        keywords: 'endday notify แจ้งเตือนปิดวัน',
-                        url: 'Sales.html#7.4'
-                    },
-                    {
-                        id: '7.5',
-                        icon: '',
-                        text: 'OPEN CASH DRAWER',
-                        keywords: 'open cash drawer เปิดลิ้นชักเก็บเงิน',
-                        url: 'Sales.html#7.5'
-                    }
-                ]
-            }
-        ]
+        url: 'Sales.html', // ให้มี URL หรือไม่มีก็ได้ตามความเหมาะสม
+    },
+    // นี่คือลูกโดยตรงของ 'sales-access-and-opening-sales'
+    {
+        id: '1',
+        icon: '',
+        text: 'Adding Change Money to set Cashier Permissions',
+        keywords: 'adding change money set cashier permissions เพิ่มเงินทอน ตั้งค่าสิทธิ์แคชเชียร์',
+        url: 'Sales.html#1',
+        parent: 'sales-access-and-opening-sales', // ชี้ไปที่เมนูหลัก Sales
+        type: 'submenu'
+    },
+    // เปลี่ยน ORDER PROCESSING ให้เป็นแค่ submenu
+    {
+        id: '2',
+        icon: '',
+        text: 'ORDER PROCESSING',
+        keywords: 'order processing กระบวนการสั่งซื้อ',
+        url: 'Sales.html#2',
+        parent: 'sales-access-and-opening-sales', // ชี้ไปที่เมนูหลัก Sales
+        type: 'submenu'
+    },
+    // ย้าย New Order Processing ขึ้นมาเป็นลูกโดยตรงของ Sales Access
+    {
+        id: '2.1.',
+        icon: '',
+        text: 'New Order Processing',
+        keywords: 'new order processing กระบวนการสั่งซื้อใหม่',
+        url: 'Sales.html#2.1.',
+        parent: 'sales-access-and-opening-sales', // ชี้ไปที่เมนูหลัก Sales
+        type: 'submenu'
+    },
+    // ย้าย Customer Type Selection ขึ้นมาเป็นลูกโดยตรงของ Sales Access
+    {
+        id: '2.2.',
+        icon: '',
+        text: 'Customer Type Selection - DINE IN OR TAKE AWAY',
+        keywords: 'customer type selection dine in take away เลือกประเภทลูกค้า ทานที่ร้าน กลับบ้าน',
+        url: 'Sales.html#2.2.',
+        parent: 'sales-access-and-opening-sales', // ชี้ไปที่เมนูหลัก Sales
+        type: 'submenu'
+    },
+    // เปลี่ยน PAYMENT PROCESSING ให้เป็นแค่ submenu
+    {
+        id: '3',
+        icon: '',
+        text: 'PAYMENT PROCESSING',
+        keywords: 'payment processing กระบวนการชำระเงิน',
+        url: 'Sales.html#3',
+        parent: 'sales-access-and-opening-sales', // ชี้ไปที่เมนูหลัก Sales
+        type: 'submenu'
+    },
+    // ย้ายลูกๆ ของ PAYMENT PROCESSING ขึ้นมาเป็นลูกโดยตรงของ Sales Access
+    {
+        id: '3.1.',
+        icon: '',
+        text: 'Cash Payment Processing',
+        keywords: 'cash payment processing ชำระเงินสด',
+        url: 'Sales.html#3.1.',
+        parent: 'sales-access-and-opening-sales',
+        type: 'submenu'
+    },
+    {
+        id: '3.2.',
+        icon: '',
+        text: 'Exact Amount Payment Processing',
+        keywords: 'exact amount payment processing ชำระเงินตรงจำนวน',
+        url: 'Sales.html#3.2.',
+        parent: 'sales-access-and-opening-sales',
+        type: 'submenu'
+    },
+    {
+        id: '3.3.',
+        icon: '',
+        text: 'Credit Card Payment Processing',
+        keywords: 'credit card payment processing ชำระด้วยบัตรเครดิต',
+        url: 'Sales.html#3.3.',
+        parent: 'sales-access-and-opening-sales',
+        type: 'submenu'
+    },
+    {
+        id: '3.4.',
+        icon: '',
+        text: 'Cash Payment Processing Based on Received Amount',
+        keywords: 'cash payment received amount ชำระเงินสดตามจำนวนที่ได้รับ',
+        url: 'Sales.html#3.4.',
+        parent: 'sales-access-and-opening-sales',
+        type: 'submenu'
+    },
+    {
+        id: '3.5.',
+        icon: '',
+        text: 'In cases where the customer wants to pay partially with cash and complete the payment with a credit card',
+        keywords: 'partial payment cash credit card ชำระบางส่วน เงินสด บัตรเครดิต',
+        url: 'Sales.html#3.5.',
+        parent: 'sales-access-and-opening-sales',
+        type: 'submenu'
+    },
+    // Void Order, Check Hourly Sales, Closing Sales จะยังคงเป็นลูกโดยตรงอยู่แล้ว
+    {
+        id: '4',
+        icon: '',
+        text: 'VOID ORDER - AFTER BILL COMPLETION',
+        keywords: 'void order ยกเลิกออเดอร์ หลังพิมพ์บิล',
+        url: 'Sales.html#4',
+        parent: 'sales-access-and-opening-sales',
+        type: 'submenu'
+    },
+    {
+        id: '5',
+        icon: '',
+        text: 'CHECK HOURLY SALES FIGURES',
+        keywords: 'check hourly sales figures ตรวจสอบยอดขายรายชั่วโมง',
+        url: 'Sales.html#5',
+        parent: 'sales-access-and-opening-sales',
+        type: 'submenu'
+    },
+    {
+        id: '6',
+        icon: '',
+        text: 'CLOSING SALES DURING THE DAY',
+        keywords: 'closing sales during day ปิดยอดขายระหว่างวัน',
+        url: 'Sales.html#6',
+        parent: 'sales-access-and-opening-sales',
+        type: 'submenu'
+    },
+    // เปลี่ยน Using Additional Functions ให้เป็นแค่ submenu
+    {
+        id: '7',
+        icon: '',
+        text: 'Using Additional Functions',
+        keywords: 'using additional functions ใช้ฟังก์ชันเพิ่มเติม',
+        url: 'Sales.html#7',
+        parent: 'sales-access-and-opening-sales', // ชี้ไปที่เมนูหลัก Sales
+        type: 'submenu'
+    },
+    // ย้ายลูกๆ ของ Using Additional Functions ขึ้นมาเป็นลูกโดยตรงของ Sales Access
+    {
+        id: '7.1.',
+        icon: '',
+        text: 'CLOSE SHIFT REPRINT',
+        keywords: 'close shift reprint พิมพ์ซ้ำปิดกะ',
+        url: 'Sales.html#7.1.',
+        parent: 'sales-access-and-opening-sales',
+        type: 'submenu'
+    },
+    {
+        id: '7.2.',
+        icon: '',
+        text: 'Active SHIFT REPRINT',
+        keywords: 'active shift reprint พิมพ์ซ้ำกะปัจจุบัน',
+        url: 'Sales.html#7.2.',
+        parent: 'sales-access-and-opening-sales',
+        type: 'submenu'
+    },
+    {
+        id: '7.3',
+        icon: '',
+        text: 'ENDDAY REPRINT',
+        keywords: 'endday reprint พิมพ์ซ้ำปิดวัน',
+        url: 'Sales.html#7.3.',
+        parent: 'sales-access-and-opening-sales',
+        type: 'submenu'
+    },
+    {
+        id: '7.4.',
+        icon: '',
+        text: 'ENDDAY NOTIFY',
+        keywords: 'endday notify แจ้งเตือนปิดวัน',
+        url: 'Sales.html#7.4.',
+        parent: 'sales-access-and-opening-sales',
+        type: 'submenu'
+    },
+    {
+        id: '7.5.',
+        icon: '',
+        text: 'OPEN CASH DRAWER',
+        keywords: 'open cash drawer เปิดลิ้นชักเก็บเงิน',
+        url: 'Sales.html#7.5.',
+        parent: 'sales-access-and-opening-sales',
+        type: 'submenu'
     },
     {
         id: 'tax',
@@ -242,19 +281,48 @@ const menuItems = [
     }
 ];
 
-// State management
-let currentSearchTerm = '';
-let filteredMenuItems = [...menuItems];
-let currentPage = 'drink-dispensers'; // default
+// ประกาศตัวแปรหลักๆ ที่ใช้ทั่วทั้งไฟล์
 let searchInput;
 let menuList;
+let currentSearchTerm = '';
+let searchTimeout;
+let currentPage = '';
+let filteredMenuItems = [];
+
 
 // Debug function
 function debugLog(message, data = null) {
     console.log(`🐛 DEBUG: ${message}`, data || '');
 }
 
+function highlightSearchTerm(text, term) {
+    if (!term) return text;
+    // Escapes special characters in the term for use in regex
+    const regex = new RegExp(`(${term.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
+    return text.replace(regex, '<span class="highlight">$1</span>');
+}
 
+function clearContentHighlight() {
+    document.querySelectorAll('.content-section .highlight').forEach(span => {
+        const parent = span.parentNode;
+        parent.replaceChild(document.createTextNode(span.textContent), span);
+        parent.normalize(); // Merges adjacent text nodes
+    });
+}
+
+function highlightContent(term) {
+    if (!term) {
+        clearContentHighlight();
+        return;
+    }
+    document.querySelectorAll('.content-section p, .content-section h1, .content-section h2, .content-section h3, .content-section li').forEach(element => {
+        const originalHTML = element.innerHTML;
+        const highlightedHTML = highlightSearchTerm(originalHTML, term);
+        if (originalHTML !== highlightedHTML) {
+            element.innerHTML = highlightedHTML;
+        }
+    });
+}
 
    
 // Function to create TOC for Time Recording page
@@ -340,7 +408,135 @@ function initializeApp() {
         debugLog('❌ Required DOM elements not found!');
         return;
     }
-    
+    // ... (ส่วนบนของ script.js เช่น global variables, buildMenuTree, findActiveChild)
+
+// === Helper Functions ===
+
+// ... (debugLog, fuzzyMatch, highlightText, buildMenuTree, findActiveChild)
+
+/**
+ * Sets up hover functionality for menu items that have a TOC.
+ * This makes a specific menu item's TOC visible on hover and hidden on mouse leave.
+ * @param {HTMLElement} menuItemElement - The <li> element of the menu item.
+ * @param {Object} itemData - The original menu item data for this element. (Added for menuLink click logic)
+ */
+function setupMenuItemHoverWithTOC(menuItemElement, itemData) { // Added itemData parameter
+    const tocContainer = menuItemElement.querySelector('.toc-container');
+    const tocToggle = menuItemElement.querySelector('.toc-toggle');
+    const tocContent = menuItemElement.querySelector('.toc-content');
+    const menuLink = menuItemElement.querySelector('.menu-link');
+
+    if (!tocContainer || !tocToggle || !tocContent || !menuLink) {
+        // debugLog('❌ TOC elements not found for menu item, skipping setup:', menuItemElement.querySelector('.menu-link')?.textContent || 'N/A');
+        return;
+    }
+
+    let hoverTimeout;
+    let isHovering = false;
+    // Determine initial isTocOpen state based on whether the menu link or its parent is active
+    let isTocOpen = menuLink.classList.contains('active') || menuItemElement.classList.contains('parent-active');
+
+    // Set initial display state based on isTocOpen
+    tocContent.style.display = isTocOpen ? 'block' : 'none';
+    tocToggle.textContent = isTocOpen ? '▲' : '▼';
+    if (isTocOpen) {
+        menuItemElement.classList.add('toc-open-by-active');
+        // Ensure the main sub-menu is also displayed if parent is active
+        const subMenu = menuItemElement.querySelector('.sub-menu');
+        if (subMenu) subMenu.style.display = 'block';
+    } else {
+        menuItemElement.classList.remove('toc-open-by-active');
+        const subMenu = menuItemElement.querySelector('.sub-menu');
+        if (subMenu) subMenu.style.display = 'none'; // Ensure it's hidden if not active
+    }
+
+
+    // Mouse enter on menu item (li)
+    menuItemElement.addEventListener('mouseenter', () => {
+        isHovering = true;
+        clearTimeout(hoverTimeout); // Clear any pending hide
+        if (!isTocOpen) { // Only show on hover if not already open from click/active state
+            tocContent.style.display = 'block';
+            tocToggle.textContent = '▲';
+            menuItemElement.classList.add('toc-hover');
+        }
+        // debugLog('✅ TOC shown on hover for:', menuLink.textContent);
+    });
+
+    // Mouse leave on menu item (li)
+    menuItemElement.addEventListener('mouseleave', () => {
+        isHovering = false;
+        hoverTimeout = setTimeout(() => {
+            if (!isHovering && !isTocOpen) { // Only hide if not hovering and not explicitly open
+                tocContent.style.display = 'none';
+                tocToggle.textContent = '▼';
+                menuItemElement.classList.remove('toc-hover');
+                // debugLog('✅ TOC hidden on mouse leave for:', menuLink.textContent);
+            }
+        }, 300); // Small delay before hiding
+    });
+
+    // Mouse enter on TOC container itself - prevent hiding when cursor moves into TOC
+    tocContainer.addEventListener('mouseenter', () => {
+        isHovering = true;
+        clearTimeout(hoverTimeout); // Keep TOC visible
+    });
+
+    // Mouse leave on TOC container
+    tocContainer.addEventListener('mouseleave', () => {
+        isHovering = false;
+        hoverTimeout = setTimeout(() => {
+            if (!isHovering && !isTocOpen) { // Only hide if not hovering and not explicitly open
+                tocContent.style.display = 'none';
+                tocToggle.textContent = '▼';
+                menuItemElement.classList.remove('toc-hover');
+                // debugLog('✅ TOC hidden on TOC container leave for:', menuLink.textContent);
+            }
+        }, 300);
+    });
+
+    // Click handler for the toggle icon (optional, for persistent toggle)
+    tocToggle.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent click from bubbling up to parent link
+        isTocOpen = !isTocOpen; // Toggle the persistent open state
+
+        if (isTocOpen) {
+            tocContent.style.display = 'block';
+            tocToggle.textContent = '▲';
+            menuItemElement.classList.add('toc-open-clicked');
+            menuItemElement.classList.remove('toc-hover'); // Remove hover class if opened by click
+            // debugLog('✅ TOC opened by click:', menuLink.textContent);
+
+            // Also toggle the main sub-menu if it's a parent link
+            const subMenu = menuItemElement.querySelector('.sub-menu');
+            if (subMenu) subMenu.style.display = 'block';
+
+        } else {
+            tocContent.style.display = 'none';
+            tocToggle.textContent = '▼';
+            menuItemElement.classList.remove('toc-open-clicked');
+            // debugLog('✅ TOC closed by click:', menuLink.textContent);
+
+            // Also toggle the main sub-menu
+            const subMenu = menuItemElement.querySelector('.sub-menu');
+            if (subMenu) subMenu.style.display = 'none';
+        }
+    });
+
+    // Add a click handler to the main menu link itself
+    menuLink.addEventListener('click', (event) => {
+        // If the link has children and its URL is primarily a placeholder for children,
+        // prevent default navigation and toggle the sub-menu/TOC
+        if (itemData && itemData.children && itemData.children.length > 0 && (itemData.url === '#' || !itemData.url)) {
+            event.preventDefault(); // Stop default link behavior
+            tocToggle.click(); // Simulate a click on the toggle icon to open/close
+        }
+        // If it has a URL AND children (e.g., Sales.html), it will navigate.
+        // The hover TOC will still work.
+    });
+}
+
+// ... (ส่วน createMenuItemHTML, filterTree, renderMenuItems, performSearch ด้านล่าง)
     // Render initial menu - แสดงเมนูทั้งหมดเสมอ
     renderMenuItems(menuItems)
     function renderMenuItems(itemsToRender) { // เปลี่ยนชื่อ parameter ให้ชัดเจนขึ้น
@@ -524,15 +720,16 @@ function createMenuItemHTML(item, searchTerm) {
     li.className = 'menu-item';
     li.setAttribute('data-id', item.id);
 
-    const href = item.url || `${item.id}.html`;
-    const link = document.createElement('a');
+     const href = item.url && item.url !== 'javascript:void(0);' ? item.url : 'javascript:void(0);';
+     const link = document.createElement('a');
     link.href = href;
-    link.className = 'menu-link'; // Class พื้นฐาน
+    link.className = 'menu-link';
     link.setAttribute('data-id', item.id);
-    link.setAttribute('data-url', href);
+    link.setAttribute('data-url', item.url || ''); // Store actual URL
     link.title = item.text;
 
-    if (item.icon) {
+
+     if (item.icon) {
         const iconSpan = document.createElement('span');
         iconSpan.className = 'menu-icon';
         iconSpan.textContent = item.icon;
@@ -570,14 +767,16 @@ function createMenuItemHTML(item, searchTerm) {
         li.addEventListener('mouseenter', () => {
             clearTimeout(hoverTimeout);
             subMenuUl.style.display = 'block';
-            li.classList.add('has-submenu-hover'); // เพื่อใช้ CSS เน้นเมนูหลัก
+            li.classList.add('has-submenu-hover');
+            debugLog(`Sub-menu for ${item.id} shown.`);
         });
 
         li.addEventListener('mouseleave', () => {
             hoverTimeout = setTimeout(() => {
                 subMenuUl.style.display = 'none';
                 li.classList.remove('has-submenu-hover');
-            }, 200); // หน่วงเวลา
+                debugLog(`Sub-menu for ${item.id} hidden.`);
+            }, 200);
         });
 
         // ทำให้ Sub-menu ยังคงแสดงอยู่เมื่อเมาส์อยู่บน Sub-menu เอง
@@ -611,13 +810,17 @@ function renderMenuItems(itemsToRender) {
 function performSearch(searchTerm) {
     debugLog('🔍 Performing search', searchTerm);
 
-    if (searchTerm === '') {
-        // ถ้าไม่มีคำค้นหา ให้แสดงเมนูทั้งหมด
-        renderMenuItems(menuItems); // ใช้ menuItems ต้นฉบับ
-        clearContentHighlight();
+    if (itemsToRender.length === 0) {
+        menuList.innerHTML = `
+            <li class="no-results">
+                <span style="color: rgba(255,255,255,0.6); font-style: italic; padding: 20px; display: block;">
+                    🔍 No results found matching your search.
+                </span>
+            </li>
+        `;
         return;
     }
-
+    
     // ฟังก์ชัน helper สำหรับค้นหาในโครงสร้าง Tree และคืนค่าเฉพาะรายการที่ตรงกัน
     function filterTree(items, term) {
         const results = [];
@@ -1046,18 +1249,17 @@ function performSearch(searchTerm) {
 }
 
 // Simple fuzzy matching
-function fuzzyMatch(text, pattern) {
-    let textIndex = 0;
-    let patternIndex = 0;
-    
-    while (textIndex < text.length && patternIndex < pattern.length) {
-        if (text[textIndex] === pattern[patternIndex]) {
-            patternIndex++;
+function fuzzyMatch(text, term) {
+    // Simple fuzzy match: checks if all chars of term are in text in order
+    // Example: "py" matches "python"
+    let i = 0, j = 0;
+    while (i < text.length && j < term.length) {
+        if (text[i].toLowerCase() === term[j].toLowerCase()) {
+            j++;
         }
-        textIndex++;
+        i++;
     }
-    
-    return patternIndex === pattern.length;
+    return j === term.length;
 }
 
 // Highlight search terms
