@@ -1,4 +1,8 @@
 // Debug Version - Manual Documentation Site JavaScript
+// Debug Version - Manual Documentation Site JavaScript
+
+// === Global Variables ===
+// ประกาศตัวแปรหลักๆ ที่ใช้ทั่วทั้งไฟล์
 
 // Menu items data with navigation URLs
 const menuItems = [
@@ -16,19 +20,197 @@ const menuItems = [
         keywords: 'system login เข้าสู่ระบบ authentication user access credentials password username signin account portal',
         url: 'employees.html'
     },
+    // *** เพิ่ม Sub-menu ที่จะซ่อนไว้ก่อน ***
     {
-        id: 'Time-recording',
+        id: 'employees-items-to-check',
+        icon: '',
+        text: 'Items to check',
+        keywords: 'items to check รายการตรวจสอบ สิ่งที่ต้องตรวจสอบ',
+        url: 'employees.html#items-to-check',
+        parent: 'employees', // ระบุ parent
+        type: 'submenu' // ระบุประเภทว่าเป็น submenu
+    },
+    {
+        id: 'employees-important-notes',
+        icon: '',
+        text: 'Important Notes',
+        keywords: 'important notes บันทึกสำคัญ ข้อควรจำ',
+        url: 'employees.html#important-notes',
+        parent: 'employees',
+        type: 'submenu'
+    },
+    {
+        id: 'time-recording',
         icon: '',
         text: 'Time Recording',
         keywords: 'time recording บันทึกเวลา timesheet attendance clock tracking hours minutes timestamp logging',
         url: 'Time.html'
     },
-    {
-        id: 'Sales',
+     {
+        id: 'Clock In',
         icon: '',
-        text: 'Sales Access',
-        keywords: 'sales access การเข้าถึงการขาย transaction revenue billing payment checkout cashier pos terminal',
-        url: 'Sales.html'
+        text: 'Clock In',
+        keywords: 'clock in บันทึกเวลา เข้าทำงาน',
+        url: 'Time.html#clock-in',
+        parent: 'time-recording',
+        type: 'submenu'
+    },
+     {
+        id: 'Clock Out',
+        icon: '',
+        text: 'Clock Out',
+        keywords: 'clock out บันทึกเวลา ออกงาน',
+        url: 'Time.html#clock-out',
+        parent: 'time-recording',
+        type: 'submenu'
+    },
+     {
+        id: 'sales-access-and-opening-sales', // ตั้งเป็นเมนูหลักรวม
+        icon: '',
+        text: 'Sales Access and Opening Sales',
+        keywords: 'sales access opening sales การเข้าถึงการขาย การเปิดขาย',
+        url: 'Sales.html', // อาจจะลิงก์ไปหน้า Sales หลัก หรือไม่มี URL ถ้าเป็นแค่หัวข้อ
+        children: [
+            {
+                id: '1',
+                icon: '',
+                text: 'Adding Change Money to set Cashier Permissions',
+                keywords: 'adding change money set cashier permissions เพิ่มเงินทอน ตั้งค่าสิทธิ์แคชเชียร์',
+                url: 'Sales.html#1'
+            },
+            {
+                id: '2',
+                icon: '',
+                text: 'ORDER PROCESSING',
+                keywords: 'order processing กระบวนการสั่งซื้อ',
+                url: 'Sales.html#2',
+                children: [
+                    {
+                        id: '2.1',
+                        icon: '',
+                        text: 'New Order Processing',
+                        keywords: 'new order processing กระบวนการสั่งซื้อใหม่',
+                        url: 'Sales.html#2.1'
+                    },
+                    {
+                        id: '2.2',
+                        icon: '',
+                        text: 'Customer Type Selection - DINE IN OR TAKE AWAY',
+                        keywords: 'customer type selection dine in take away เลือกประเภทลูกค้า ทานที่ร้าน กลับบ้าน',
+                        url: 'Sales.html#2.2'
+                    }
+                ]
+            },
+            {
+                id: '3',
+                icon: '',
+                text: 'PAYMENT PROCESSING',
+                keywords: 'payment processing กระบวนการชำระเงิน',
+                url: 'Sales.html#3',
+                children: [
+                    {
+                        id: '3.1',
+                        icon: '',
+                        text: 'Cash Payment Processing',
+                        keywords: 'cash payment processing ชำระเงินสด',
+                        url: 'Sales.html#3.1'
+                    },
+                    {
+                        id: '3.2',
+                        icon: '',
+                        text: 'Exact Amount Payment Processing',
+                        keywords: 'exact amount payment processing ชำระเงินตรงจำนวน',
+                        url: 'Sales.html#3.2'
+                    },
+                    {
+                        id: '3.3',
+                        icon: '',
+                        text: 'Credit Card Payment Processing',
+                        keywords: 'credit card payment processing ชำระด้วยบัตรเครดิต',
+                        url: 'Sales.html#3.3'
+                    },
+                    {
+                        id: '3.4',
+                        icon: '',
+                        text: 'Cash Payment Processing Based on Received Amount',
+                        keywords: 'cash payment received amount ชำระเงินสดตามจำนวนที่ได้รับ',
+                        url: 'Sales.html#3.4'
+                    },
+                    {
+                        id: '3.5',
+                        icon: '',
+                        text: 'In cases where the customer wants to pay partially with cash and complete the payment with a credit card',
+                        keywords: 'partial payment cash credit card ชำระบางส่วน เงินสด บัตรเครดิต',
+                        url: 'Sales.html#3.5'
+                    }
+                ]
+            },
+            {
+                id: '4',
+                icon: '',
+                text: 'VOID ORDER - AFTER BILL COMPLETION',
+                keywords: 'void order ยกเลิกออเดอร์ หลังพิมพ์บิล',
+                url: 'Sales.html#4'
+            },
+            {
+                id: '5',
+                icon: '',
+                text: 'CHECK HOURLY SALES FIGURES',
+                keywords: 'check hourly sales figures ตรวจสอบยอดขายรายชั่วโมง',
+                url: 'Sales.html#5'
+            },
+            {
+                id: '6',
+                icon: '',
+                text: 'CLOSING SALES DURING THE DAY',
+                keywords: 'closing sales during day ปิดยอดขายระหว่างวัน',
+                url: 'Sales.html#6'
+            },
+            {
+                id: '7',
+                icon: '',
+                text: 'Using Additional Functions',
+                keywords: 'using additional functions ใช้ฟังก์ชันเพิ่มเติม',
+                url: 'Sales.html#7',
+                children: [
+                    {
+                        id: '7.1',
+                        icon: '',
+                        text: 'CLOSE SHIFT REPRINT',
+                        keywords: 'close shift reprint พิมพ์ซ้ำปิดกะ',
+                        url: 'Sales.html#7.1'
+                    },
+                    {
+                        id: '7.2',
+                        icon: '',
+                        text: 'Active SHIFT REPRINT',
+                        keywords: 'active shift reprint พิมพ์ซ้ำกะปัจจุบัน',
+                        url: 'Sales.html#7.2'
+                    },
+                    {
+                        id: '7.3',
+                        icon: '',
+                        text: 'ENDDAY REPRINT',
+                        keywords: 'endday reprint พิมพ์ซ้ำปิดวัน',
+                        url: 'Sales.html#7.3'
+                    },
+                    {
+                        id: '7.4',
+                        icon: '',
+                        text: 'ENDDAY NOTIFY',
+                        keywords: 'endday notify แจ้งเตือนปิดวัน',
+                        url: 'Sales.html#7.4'
+                    },
+                    {
+                        id: '7.5',
+                        icon: '',
+                        text: 'OPEN CASH DRAWER',
+                        keywords: 'open cash drawer เปิดลิ้นชักเก็บเงิน',
+                        url: 'Sales.html#7.5'
+                    }
+                ]
+            }
+        ]
     },
     {
         id: 'tax',
@@ -59,6 +241,7 @@ const menuItems = [
         url: 'endday.html'
     }
 ];
+
 // State management
 let currentSearchTerm = '';
 let filteredMenuItems = [...menuItems];
@@ -69,6 +252,39 @@ let menuList;
 // Debug function
 function debugLog(message, data = null) {
     console.log(`🐛 DEBUG: ${message}`, data || '');
+}
+
+
+
+   
+// Function to create TOC for Time Recording page
+function createTimeRecordingTOC() {
+    // สร้าง main container
+    const tocContainer = document.createElement('div');
+
+    
+    // สร้างปุ่ม toggle - ใช้ข้อความที่คุณต้องการ
+    const tocToggle = document.createElement('button');
+    tocToggle.className = 'toc-toggle';
+  
+    
+    
+    // สร้าง content container
+    const tocContent = document.createElement('div');
+ 
+ 
+    
+    // เพิ่ม comment สำหรับ reference
+    const comment = document.createComment(' TOC items will be generated by JavaScript ');
+    tocContent.appendChild(comment);
+    
+    // รวมทุกส่วนเข้าด้วยกัน
+  
+    tocContainer.appendChild(tocContent);
+    
+    debugLog('✅ TOC HTML structure created via JavaScript');
+    
+    return tocContainer;
 }
 
 // Auto-detect current page
@@ -91,7 +307,12 @@ function detectCurrentPage() {
     if (filename === '' || filename === 'index') {
         currentPage = 'drink-dispensers';
     } else {
-        currentPage = filename;
+        // แปลง filename ให้ตรงกับ menu item id
+        if (filename.toLowerCase() === 'time') {
+            currentPage = 'time-recording';
+        } else {
+            currentPage = filename.toLowerCase();
+        }
     }
     
     debugLog('Current page detected', currentPage);
@@ -120,8 +341,162 @@ function initializeApp() {
         return;
     }
     
-    // Render initial menu
-    renderMenuItems(menuItems);
+    // Render initial menu - แสดงเมนูทั้งหมดเสมอ
+    renderMenuItems(menuItems)
+    function renderMenuItems(itemsToRender) { // เปลี่ยนชื่อ parameter ให้ชัดเจนขึ้น
+    if (!menuList) {
+        debugLog('❌ menuList not found in renderMenuItems');
+        return;
+    }
+
+    debugLog('Rendering menu items', { itemCount: itemsToRender.length, currentPage });
+
+    menuList.innerHTML = '';
+
+    if (itemsToRender.length === 0) {
+        menuList.innerHTML = `
+            <li class="no-results">
+                <span style="color: rgba(255,255,255,0.6); font-style: italic; padding: 20px; display: block;">
+                    🔍 ไม่พบผลลัพธ์ที่ตรงกับการค้นหา
+                </span>
+            </li>
+        `;
+        return;
+    }
+
+    // สร้าง Map สำหรับเก็บ parent menu item เพื่อแนบ sub-menu เข้าไป
+    const parentMenuItems = new Map();
+
+    // Loop แรก: สร้างเมนูหลักและเก็บอ้างอิง
+    itemsToRender.forEach((item, index) => {
+        if (item.type === 'submenu') { // ข้าม sub-menu ในการ loop รอบแรก
+            return;
+        }
+
+        const li = document.createElement('li');
+        li.className = 'menu-item';
+        li.setAttribute('data-id', item.id); // เพิ่ม data-id ให้ li ด้วย
+
+        const isActive = item.id === currentPage;
+        const href = item.url || `${item.id}.html`;
+
+        const link = document.createElement('a');
+        link.href = href;
+        link.className = isActive ? 'menu-link active' : 'menu-link';
+        link.setAttribute('data-id', item.id);
+        link.setAttribute('data-url', href);
+        link.title = item.text;
+
+        if (item.icon) {
+            const iconSpan = document.createElement('span');
+            iconSpan.className = 'menu-icon';
+            iconSpan.textContent = item.icon;
+            link.appendChild(iconSpan);
+        }
+
+        const textSpan = document.createElement('span');
+        textSpan.innerHTML = highlightSearchTerm(item.text, currentSearchTerm);
+        link.appendChild(textSpan);
+
+        li.appendChild(link);
+
+        
+
+        menuList.appendChild(li);
+        parentMenuItems.set(item.id, li); // เก็บอ้างอิง li ของเมนูหลัก
+
+        li.style.animationDelay = `${index * 50}ms`;
+        li.classList.add('menu-item-animate');
+    });
+
+    // Loop ที่สอง: สร้าง Sub-menu และแนบเข้ากับ Parent
+    itemsToRender.forEach((item) => {
+        if (item.type === 'submenu' && item.parent) {
+            const parentLi = parentMenuItems.get(item.parent);
+            if (parentLi) {
+                // ถ้ายังไม่มี ul.sub-menu ให้สร้างขึ้นมา
+                let subMenuUl = parentLi.querySelector('.sub-menu');
+                if (!subMenuUl) {
+                    subMenuUl = document.createElement('ul');
+                    subMenuUl.className = 'sub-menu';
+                    // ให้ซ่อนไว้ก่อน
+                    subMenuUl.style.display = 'none'; // เริ่มต้นซ่อน sub-menu
+                    parentLi.appendChild(subMenuUl);
+                }
+
+                const subLi = document.createElement('li');
+                const subLink = document.createElement('a');
+                subLink.href = item.url;
+                subLink.textContent = item.text; // ไม่ต้อง highlight ใน sub-menu โดยตรง (หรือจะใส่ก็ได้)
+                subLink.className = 'sub-menu-link';
+                subLink.setAttribute('data-id', item.id);
+                subLink.setAttribute('data-url', item.url);
+                subLi.appendChild(subLink);
+                subMenuUl.appendChild(subLi);
+                
+                debugLog(`✅ Sub-menu "${item.text}" added to "${item.parent}"`);
+            }
+        }
+    });
+
+    // *** เพิ่ม Logic สำหรับ Hover เพื่อแสดง/ซ่อน Sub-menu ***
+    // (ควรเรียกหลังจาก renderMenuItems เสร็จสมบูรณ์)
+    setupSubMenuHover();
+
+    debugLog('Menu rendering complete');
+}
+
+
+// ฟังก์ชันใหม่สำหรับจัดการ Hover ของ Sub-menu
+function setupSubMenuHover() {
+   const parentMenuIdsWithSubmenus = [...new Set(menuItems
+        .filter(item => item.type === 'submenu')
+        .map(item => item.parent)
+    )];
+
+    parentMenuIdsWithSubmenus.forEach(parentId => {
+        const parentLi = document.querySelector(`.menu-item[data-id="${parentId}"]`);
+        if (!parentLi) return;
+
+        const subMenuUl = parentLi.querySelector('.sub-menu');
+        if (!subMenuUl) return; // หากไม่มี sub-menu element จริงๆ ก็ข้ามไป
+
+        let hoverTimeout;
+
+        parentLi.addEventListener('mouseenter', () => {
+            clearTimeout(hoverTimeout);
+            subMenuUl.style.display = 'block';
+            parentLi.classList.add('has-submenu-hover');
+            debugLog(`Sub-menu for ${parentLi.dataset.id} shown.`);
+        });
+
+        parentLi.addEventListener('mouseleave', () => {
+            hoverTimeout = setTimeout(() => {
+                subMenuUl.style.display = 'none';
+                parentLi.classList.remove('has-submenu-hover');
+                debugLog(`Sub-menu for ${parentLi.dataset.id} hidden.`);
+            }, 200);
+        });
+
+        subMenuUl.addEventListener('mouseenter', () => {
+            clearTimeout(hoverTimeout);
+        });
+
+        subMenuUl.addEventListener('mouseleave', () => {
+            hoverTimeout = setTimeout(() => {
+                subMenuUl.style.display = 'none';
+                parentLi.classList.remove('has-submenu-hover');
+                debugLog(`Sub-menu for ${parentLi.dataset.id} hidden from sub-menu leave.`);
+            }, 200);
+        });
+    });
+
+    debugLog('✅ Sub-menu hover functionality setup');
+}
+
+// ต้องแน่ใจว่า initializeApp ถูกเรียก
+document.addEventListener('DOMContentLoaded', initializeApp);
+;
     
     // Setup search functionality
     setupSearch();
@@ -132,21 +507,156 @@ function initializeApp() {
     // Setup keyboard shortcuts
     setupKeyboardShortcuts();
     
+    // Initialize Time Recording TOC if on time recording page
+    if (currentPage === 'time-recording') {
+        debugLog('🎯 Initializing Time Recording TOC...');
+        setTimeout(() => {
+            new TimeRecordingTooltipSystem();
+        }, 300);
+    }
+    
     debugLog('✅ Initialization complete', currentPage);
 }
 
-// Render menu items with navigation support
-function renderMenuItems(items) {
+// Render menu items with navigation support and TOC
+function createMenuItemHTML(item, searchTerm) {
+    const li = document.createElement('li');
+    li.className = 'menu-item';
+    li.setAttribute('data-id', item.id);
+
+    const href = item.url || `${item.id}.html`;
+    const link = document.createElement('a');
+    link.href = href;
+    link.className = 'menu-link'; // Class พื้นฐาน
+    link.setAttribute('data-id', item.id);
+    link.setAttribute('data-url', href);
+    link.title = item.text;
+
+    if (item.icon) {
+        const iconSpan = document.createElement('span');
+        iconSpan.className = 'menu-icon';
+        iconSpan.textContent = item.icon;
+        link.appendChild(iconSpan);
+    }
+
+    const textSpan = document.createElement('span');
+    textSpan.innerHTML = highlightSearchTerm(item.text, searchTerm); // ใช้ highlightSearchTerm
+    link.appendChild(textSpan);
+
+    li.appendChild(link);
+
+    // ถ้าเมนูนี้มี Sub-menu (มี children)
+    if (item.children && item.children.length > 0) {
+        // เพิ่ม dropdown arrow
+        const arrow = document.createElement('span');
+        arrow.className = 'menu-arrow';
+        arrow.textContent = ' ▼'; // หรือใช้ icon arrow_drop_down
+        link.appendChild(arrow); // เพิ่มลูกศรในลิงก์หลัก
+
+        const subMenuUl = document.createElement('ul');
+        subMenuUl.className = 'sub-menu';
+        subMenuUl.style.display = 'none'; // ซ่อน Sub-menu ไว้ก่อน
+
+        item.children.forEach(childItem => {
+            // เรียกฟังก์ชันนี้ซ้ำ (Recursive) เพื่อสร้าง Sub-menu
+            const subMenuItemHTML = createMenuItemHTML(childItem, searchTerm);
+            subMenuUl.appendChild(subMenuItemHTML);
+        });
+        li.appendChild(subMenuUl);
+
+        // เพิ่ม Event Listener สำหรับการ Hover (สำหรับเมนูหลักที่มี sub-menu)
+        // เพื่อควบคุมการแสดง/ซ่อน subMenuUl นี้
+        let hoverTimeout;
+        li.addEventListener('mouseenter', () => {
+            clearTimeout(hoverTimeout);
+            subMenuUl.style.display = 'block';
+            li.classList.add('has-submenu-hover'); // เพื่อใช้ CSS เน้นเมนูหลัก
+        });
+
+        li.addEventListener('mouseleave', () => {
+            hoverTimeout = setTimeout(() => {
+                subMenuUl.style.display = 'none';
+                li.classList.remove('has-submenu-hover');
+            }, 200); // หน่วงเวลา
+        });
+
+        // ทำให้ Sub-menu ยังคงแสดงอยู่เมื่อเมาส์อยู่บน Sub-menu เอง
+        subMenuUl.addEventListener('mouseenter', () => {
+            clearTimeout(hoverTimeout);
+        });
+        subMenuUl.addEventListener('mouseleave', () => {
+            hoverTimeout = setTimeout(() => {
+                subMenuUl.style.display = 'none';
+            }, 200);
+        });
+    }
+
+    return li;
+}
+
+// ปรับปรุง renderMenuItems function
+function renderMenuItems(itemsToRender) {
     if (!menuList) {
         debugLog('❌ menuList not found in renderMenuItems');
         return;
     }
-    
-    debugLog('Rendering menu items', { itemCount: items.length, currentPage });
-    
+
+    debugLog('Rendering menu items', { itemCount: itemsToRender.length, currentPage });
+
     menuList.innerHTML = '';
-    
-    if (items.length === 0) {
+
+    // ก่อนอื่น สร้าง Map เพื่อให้เข้าถึงเมนูทั้งหมดได้ง่ายขึ้นเมื่อกรอง
+    // เนื่องจากโครงสร้างเป็น Tree เราต้อง Flatten มันก่อนสำหรับการค้นหาทั้งหมด
+    // (ฟังก์ชัน performSearch จะจัดการเรื่องนี้)
+function performSearch(searchTerm) {
+    debugLog('🔍 Performing search', searchTerm);
+
+    if (searchTerm === '') {
+        // ถ้าไม่มีคำค้นหา ให้แสดงเมนูทั้งหมด
+        renderMenuItems(menuItems); // ใช้ menuItems ต้นฉบับ
+        clearContentHighlight();
+        return;
+    }
+
+    // ฟังก์ชัน helper สำหรับค้นหาในโครงสร้าง Tree และคืนค่าเฉพาะรายการที่ตรงกัน
+    function filterTree(items, term) {
+        const results = [];
+        items.forEach(item => {
+            const searchableText = `${item.text} ${item.keywords || ''}`.toLowerCase();
+            const isMatch = searchableText.includes(term) || fuzzyMatch(searchableText, term);
+
+            let childrenMatches = [];
+            if (item.children && item.children.length > 0) {
+                childrenMatches = filterTree(item.children, term);
+            }
+
+            // ถ้าเมนูนี้ตรง หรือมีลูกที่ตรง
+            if (isMatch || childrenMatches.length > 0) {
+                const matchedItem = { ...item }; // Copy item เพื่อไม่ให้แก้ไขต้นฉบับ
+                if (childrenMatches.length > 0) {
+                    matchedItem.children = childrenMatches; // รวมเฉพาะลูกที่ตรง
+                } else if (item.children) {
+                    // ถ้าเมนูหลักตรง แต่ลูกไม่ตรง ให้ใส่ลูกทั้งหมดกลับไป แต่จะไม่ไฮไลต์
+                    // คุณอาจจะเลือกไม่ใส่ลูกเลยถ้าลูกไม่ตรง หรือใส่แค่โครงสร้างเปล่า
+                    // สำหรับตอนนี้ เราจะใส่ลูกทั้งหมดกลับไป แต่จะถูกไฮไลต์เฉพาะที่ตรง
+                    matchedItem.children = item.children.map(child => ({ ...child }));
+                }
+                results.push(matchedItem);
+            }
+        });
+        return results;
+    }
+
+    // กรองเมนูหลักโดยใช้ฟังก์ชัน filterTree
+    filteredMenuItems = filterTree(menuItems, searchTerm);
+
+    debugLog('🔍 Search results', { searchTerm, resultCount: filteredMenuItems.length });
+
+    // ส่งเมนูที่กรองแล้ว (ซึ่งยังคงเป็นโครงสร้าง Tree) ไปยัง renderMenuItems
+    renderMenuItems(filteredMenuItems);
+    highlightContent(searchTerm);
+}
+    if (itemsToRender.length === 0) {
         menuList.innerHTML = `
             <li class="no-results">
                 <span style="color: rgba(255,255,255,0.6); font-style: italic; padding: 20px; display: block;">
@@ -156,31 +666,103 @@ function renderMenuItems(items) {
         `;
         return;
     }
+
+    // สร้างเมนูหลัก
+    itemsToRender.forEach((item, index) => {
+        // ใช้ฟังก์ชัน createMenuItemHTML เพื่อสร้าง HTML สำหรับแต่ละเมนูหลัก
+        const menuItemHTML = createMenuItemHTML(item, currentSearchTerm);
+
+        // ตั้งค่า active class สำหรับเมนูหลัก
+        const linkElement = menuItemHTML.querySelector('.menu-link');
+        if (linkElement && item.id === currentPage) {
+             linkElement.classList.add('active');
+        } else { // ตรวจสอบ Sub-menu ด้วยว่า active หรือไม่
+            // Logic สำหรับ active sub-menu จะซับซ้อนขึ้นถ้าต้องทำ recursive
+            // เบื้องต้นจะแค่ไฮไลต์เมนูหลัก (parent) ถ้า sub-menu ของมัน active
+            // หรือคุณอาจจะส่ง currentUrl ไปที่ createMenuItemHTML และให้มันตรวจสอบลิงก์ทั้งหมด
+             if (linkElement && item.children && item.children.some(child => child.url === currentPage)) {
+                 linkElement.classList.add('active'); // ถ้ามี sub-menu เป็นหน้าปัจจุบัน ให้เมนูหลัก active
+             }
+        }
+
+        menuList.appendChild(menuItemHTML);
+        menuItemHTML.style.animationDelay = `${index * 50}ms`;
+        menuItemHTML.classList.add('menu-item-animate');
+    });
+
+    debugLog('Menu rendering complete');
+}
+
+// Setup hover functionality for Time Recording menu
+function setupTimeRecordingHover(menuItem, tocContainer) {
+    const menuLink = menuItem.querySelector('.menu-link');
+    const tocContent = tocContainer.querySelector('#tocContent');
+    const tocToggle = tocContainer.querySelector('#tocToggle');
     
-    items.forEach((item, index) => {
-        const li = document.createElement('li');
-        const isActive = item.id === currentPage;
-        const href = item.url || `${item.id}.html`;
+    if (!menuLink || !tocContent || !tocToggle) return;
+    
+    let hoverTimeout;
+    let isHovering = false;
+    
+    // Mouse enter on menu item
+    menuItem.addEventListener('mouseenter', () => {
+        isHovering = true;
+        clearTimeout(hoverTimeout);
         
-        debugLog(`Creating menu item: ${item.id}`, { isActive, href });
+        // แสดง TOC เมื่อ hover
         
-        li.innerHTML = `
-            <a href="${href}" 
-               class="${isActive ? 'active' : ''}" 
-               data-id="${item.id}"
-               data-url="${href}"
-               title="${item.text}">
-                ${item.icon} ${highlightSearchTerm(item.text, currentSearchTerm)}
-            </a>
-        `;
-        menuList.appendChild(li);
+        tocToggle.classList.add('active');
+   
         
-        // Add animation delay for smooth appearance
-        li.style.animationDelay = `${index * 50}ms`;
-        li.classList.add('menu-item-animate');
+        // เพิ่มเอฟเฟกต์ hover
+        menuItem.classList.add('toc-hover');
+        
+        debugLog('✅ TOC shown on hover');
     });
     
-    debugLog('Menu rendering complete');
+    // Mouse leave on menu item
+    menuItem.addEventListener('mouseleave', () => {
+        isHovering = false;
+        
+        // ซ่อน TOC หลังจาก delay เล็กน้อย
+        hoverTimeout = setTimeout(() => {
+            if (!isHovering) {
+              
+                tocToggle.classList.remove('active');
+              
+                
+                // ลบเอฟเฟกต์ hover
+                menuItem.classList.remove('toc-hover');
+                
+                debugLog('✅ TOC hidden on mouse leave');
+            }
+        }, 300); // รอ 300ms ก่อนซ่อน
+    });
+    
+    // Mouse enter on TOC container - ป้องกันการซ่อนเมื่อ hover อยู่ใน TOC
+    tocContainer.addEventListener('mouseenter', () => {
+        isHovering = true;
+        clearTimeout(hoverTimeout);
+    });
+    
+    // Mouse leave on TOC container
+    tocContainer.addEventListener('mouseleave', () => {
+        isHovering = false;
+        
+        hoverTimeout = setTimeout(() => {
+            if (!isHovering) {
+                tocContent.style.display = 'none';
+                tocToggle.classList.remove('active');
+                tocToggle.innerHTML = 'Time Recording ▼';
+                
+                menuItem.classList.remove('toc-hover');
+                
+                debugLog('✅ TOC hidden on TOC container leave');
+            }
+        }, 300);
+    });
+    
+    debugLog('✅ Time Recording hover functionality setup');
 }
 
 // Setup menu click handlers with ENHANCED debugging
@@ -240,7 +822,7 @@ function setupMenuClickHandlers() {
                 } catch (error) {
                     debugLog('❌ Navigation error', error);
                 }
-            }, 500); // Increased delay for better debugging
+            }, 500);
             
             return;
         }
@@ -324,7 +906,7 @@ function showNavigationFeedback(pageName) {
                 border-radius: 50%; 
                 animation: spin 1s linear infinite;
             "></div>
-            <span>กำลังโหลด ${pageName}...</span>
+            <span>Loading ${pageName}...</span>
         `;
         
         // Add CSS animation if not exists
@@ -341,12 +923,64 @@ function showNavigationFeedback(pageName) {
             debugLog('✅ Loading animation styles added');
         }
         
+        // Auto-hide loading div after 5 seconds (fallback)
+        setTimeout(() => {
+            hideNavigationFeedback();
+        }, 5000);
+        
         debugLog('✅ Navigation feedback displayed successfully');
         
     } catch (error) {
         debugLog('❌ Error showing navigation feedback', error);
     }
 }
+
+// Function to hide navigation feedback
+function hideNavigationFeedback() {
+    try {
+        const loadingDiv = document.getElementById('navigation-loading');
+        if (loadingDiv) {
+            // Fade out animation
+            loadingDiv.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            loadingDiv.style.opacity = '0';
+            loadingDiv.style.transform = 'translate(-50%, -50%) scale(0.9)';
+            
+            // Remove from DOM after animation
+            setTimeout(() => {
+                if (loadingDiv.parentNode) {
+                    loadingDiv.parentNode.removeChild(loadingDiv);
+                    debugLog('✅ Loading div removed');
+                }
+            }, 300);
+        }
+    } catch (error) {
+        debugLog('❌ Error hiding navigation feedback', error);
+    }
+}
+
+// Hide loading when page loads
+window.addEventListener('load', function() {
+    debugLog('📄 Page fully loaded - hiding navigation feedback');
+    hideNavigationFeedback();
+});
+
+// Hide loading when page visibility changes (when switching tabs back)
+document.addEventListener('visibilitychange', function() {
+    if (!document.hidden) {
+        debugLog('📄 Page became visible - hiding navigation feedback');
+        setTimeout(() => {
+            hideNavigationFeedback();
+        }, 500);
+    }
+});
+
+// Hide loading when DOM is ready (faster than window load)
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(() => {
+        debugLog('📄 DOM ready - hiding navigation feedback');
+        hideNavigationFeedback();
+    }, 1000);
+});
 
 // Enhanced search functionality
 function setupSearch() {
@@ -439,20 +1073,7 @@ function highlightSearchTerm(text, searchTerm) {
     }
 }
 
-// Clear search
-function clearSearch() {
-    debugLog('🧹 Clearing search');
-    if (searchInput) {
-        searchInput.value = '';
-    }
-    currentSearchTerm = '';
-    filteredMenuItems = [...menuItems];
-    renderMenuItems(filteredMenuItems);
-    clearContentHighlight();
-    if (searchInput) {
-        searchInput.blur();
-    }
-}
+
 
 // Highlight content in main area
 function highlightContent(searchTerm) {
@@ -554,7 +1175,7 @@ function setupKeyboardShortcuts() {
     });
 }
 
-// Add CSS animation classes
+// Add CSS animation classes and TOC styles
 function addAnimationStyles() {
     try {
         const style = document.createElement('style');
@@ -572,17 +1193,102 @@ function addAnimationStyles() {
                 }
             }
             
-           
             .highlight {
                 background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
                 padding: 2px 4px;
                 border-radius: 3px;
                 font-weight: bold;
-                color:rgb(3, 3, 0);
+                color: rgb(3, 3, 0);
+            }
+
+            /* Menu Styles */
+            .menu-item {
+                list-style: none;
+                margin-bottom: 5px;
+            }
+
+           
+            .menu-link:hover {
+                background: rgba(42, 82, 152, 0.3);
+                color: #ffffff;
+            }
+
+
+            .menu-icon {
+                margin-right: 10px;
+                font-size: 16px;
+            }
+
+            /* TOC Hover Effects */
+            .menu-item.toc-hover {
+                background: rgba(42, 82, 152, 0.1);
+                border-radius: 8px;
+                transform: translateX(2px);
+            }
+
+            .menu-item.toc-hover .menu-link {
+                background: rgba(42, 82, 152, 0.3);
+                color: #ffffff;
+            }
+
+            /* TOC Container Styles */
+            .toc-container {
+                margin-left: 30px;
+                margin-top: 8px;
+                border-left: 2px solid rgba(42, 82, 152, 0.3);
+                padding-left: 15px;
+                transition: all 0.3s ease;
+            }
+
+            .toc-toggle {
+                width: 100%;
+                background: rgba(42, 82, 152, 0.2);
+                color: rgba(255, 255, 255, 0.8);
+                border: none;
+                border-radius: 4px;
+                padding: 8px;
+                cursor: pointer;
+                font-size: 11px;
+                margin-bottom: 8px;
+                transition: all 0.3s ease;
+                border-left: 3px solid transparent;
+            }
+
+            .toc-toggle:hover {
+                background: rgba(42, 82, 152, 0.4);
+                border-left-color: #2a5298;
+                color: #ffffff;
+            }
+
+            .toc-toggle.active {
+                background: rgba(42, 82, 152, 0.5);
+                border-left-color: #2a5298;
+                color: #ffffff;
+            }
+    
+            .heading-tooltip:hover::before,
+            .heading-tooltip:hover::after {
+                opacity: 1;
+                visibility: visible;
+                transform: translateX(-50%) translateY(-5px);
+            }
+
+          
+            /* Responsive design */
+            @media (max-width: 768px) {
+                .toc-container {
+                    margin-top: 15px;
+                    padding-top: 10px;
+                }
+                
+                .toc-toggle {
+                    font-size: 11px;
+                    padding: 8px;
+                }
             }
         `;
         document.head.appendChild(style);
-        debugLog('✅ Animation styles added');
+        debugLog('✅ Animation styles and TOC styles added');
     } catch (error) {
         debugLog('❌ Error adding animation styles', error);
     }
@@ -611,7 +1317,8 @@ window.ManualApp = {
     filteredMenuItems: filteredMenuItems,
     currentPage: currentPage,
     detectCurrentPage: detectCurrentPage,
-    debugLog: debugLog
+    debugLog: debugLog,
+    TimeRecordingTooltipSystem: TimeRecordingTooltipSystem
 };
 
 // Additional debug helpers
@@ -626,10 +1333,13 @@ window.debugNavigation = function() {
     debugLog('Menu Links', document.querySelectorAll('.sidebar a'));
     debugLog('Current URL', window.location.href);
     debugLog('CURRENT_PAGE variable', window.CURRENT_PAGE);
+    debugLog('TOC Elements', {
+        tocToggle: !!document.getElementById('tocToggle'),
+        tocContent: !!document.getElementById('tocContent')
+    });
 };
 
 debugLog('🔧 Debug version loaded - Use debugNavigation() for detailed info');
-// เพิ่มโค้ดนี้ท้าย script.js
 
 // ==================== SCROLL TO TOP FUNCTIONALITY ====================
 document.addEventListener('DOMContentLoaded', function() {
@@ -699,6 +1409,7 @@ function initScrollToTop() {
     
     console.log('✅ Scroll to top button initialized');
 }
+
 // Follow Mouse Scroll Functionality
 document.addEventListener('DOMContentLoaded', function() {
     setTimeout(initFollowMouseScroll, 100);
@@ -857,45 +1568,7 @@ function initFollowMouseScroll() {
     console.log('✅ Follow mouse scroll button initialized');
 }
 
-// Optional: Mouse Trail Effect
-function createMouseTrail() {
-    let trails = [];
-    const maxTrails = 10;
-    
-    document.addEventListener('mousemove', function(e) {
-        if (window.innerWidth <= 768) return; // ไม่ใช้ใน Mobile
-        
-        // สร้าง trail element
-        const trail = document.createElement('div');
-        trail.className = 'mouse-trail';
-        trail.style.left = e.clientX + 'px';
-        trail.style.top = e.clientY + 'px';
-        
-        document.body.appendChild(trail);
-        trails.push(trail);
-        
-        // ลบ trail เก่า
-        if (trails.length > maxTrails) {
-            const oldTrail = trails.shift();
-            oldTrail.remove();
-        }
-        
-        // Fade out trail
-        setTimeout(() => {
-            trail.style.opacity = '0';
-            trail.style.transform = 'scale(0)';
-        }, 100);
-        
-        setTimeout(() => {
-            if (trail.parentNode) {
-                trail.remove();
-            }
-        }, 200);
-    });
-}
 // ==================== SIDEBAR FOLLOW MOUSE FUNCTIONALITY ====================
-// เพิ่มใน script.js
-
 document.addEventListener('DOMContentLoaded', function() {
     setTimeout(initSidebarFollowMouse, 100);
 });
@@ -1074,7 +1747,9 @@ function initSidebarFollowMouse() {
         toggleBtn.title = 'Toggle Sidebar';
         
         // เพิ่มใน main content
-        mainContent.appendChild(toggleBtn);
+        if (mainContent) {
+            mainContent.appendChild(toggleBtn);
+        }
         
         toggleBtn.addEventListener('click', toggleSidebar);
     }
@@ -1094,13 +1769,17 @@ function initSidebarFollowMouse() {
         
         if (isCollapsed) {
             sidebar.classList.add('collapsed');
-            mainContent.style.marginLeft = '50px';
+            if (mainContent) {
+                mainContent.style.marginLeft = '50px';
+            }
             
             // ปิด mouse tracking เมื่อหด
             disableMouseTracking();
         } else {
             sidebar.classList.remove('collapsed');
-            mainContent.style.marginLeft = '250px';
+            if (mainContent) {
+                mainContent.style.marginLeft = '250px';
+            }
             
             // เปิด mouse tracking เมื่อขยาย
             enableMouseTracking();
@@ -1108,7 +1787,9 @@ function initSidebarFollowMouse() {
         
         // อัปเดตไอคอนปุ่ม
         const toggleBtn = document.querySelector('.sidebar-toggle');
-        toggleBtn.innerHTML = isCollapsed ? '☰' : '✕';
+        if (toggleBtn) {
+            toggleBtn.innerHTML = isCollapsed ? '☰' : '✕';
+        }
     }
     
     // Toggle Mobile Sidebar
@@ -1118,15 +1799,21 @@ function initSidebarFollowMouse() {
         
         if (isOpen) {
             sidebar.classList.remove('mobile-open');
-            overlay.classList.remove('show');
+            if (overlay) {
+                overlay.classList.remove('show');
+            }
         } else {
             sidebar.classList.add('mobile-open');
-            overlay.classList.add('show');
+            if (overlay) {
+                overlay.classList.add('show');
+            }
         }
         
         // อัปเดตไอคอนปุ่ม
         const toggleBtn = document.querySelector('.sidebar-toggle');
-        toggleBtn.innerHTML = isOpen ? '☰' : '✕';
+        if (toggleBtn) {
+            toggleBtn.innerHTML = isOpen ? '☰' : '✕';
+        }
     }
     
     // สร้าง Mobile Overlay
@@ -1186,116 +1873,53 @@ function initSidebarFollowMouse() {
     console.log('✅ Sidebar follow mouse initialized');
 }
 
-// ==================== ADDITIONAL FEATURES ====================
-
-// เปลี่ยนสี Sidebar ตามหน้า
-function setSidebarTheme(page) {
-    const sidebar = document.querySelector('.sidebar');
-    if (!sidebar) return;
-    
-    // ลบ theme เก่า
-    sidebar.classList.remove('time-page', 'sales-page', 'employees-page');
-    
-    // เพิ่ม theme ใหม่
-    switch(page) {
-        case 'time-recording':
-            sidebar.classList.add('time-page');
-            break;
-        case 'sales-access':
-            sidebar.classList.add('sales-page');
-            break;
-        case 'employees':
-            sidebar.classList.add('employees-page');
-            break;
-    }
-}
-
-// เรียกใช้ตาม CURRENT_PAGE
-if (typeof window.CURRENT_PAGE !== 'undefined') {
-    setSidebarTheme(window.CURRENT_PAGE);
-}
-
-// Smooth Scrolling สำหรับ Sidebar Menu
+// ==================== DISABLE MENU EFFECTS (MODIFIED) ====================
 document.addEventListener('DOMContentLoaded', function() {
-    const sidebarLinks = document.querySelectorAll('.sidebar a[href^="#"]');
+    // รอให้เมนูโหลดเสร็จก่อน แล้วค่อยปรับแต่ง
+    setTimeout(adjustMenuStyling, 800);
+});
+
+function adjustMenuStyling() {
+    // ไม่ลบเมนู แต่ปรับแต่งสไตล์เท่านั้น
+    const menuLinks = document.querySelectorAll('.sidebar .menu-link');
     
-    sidebarLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+    menuLinks.forEach(link => {
+        // ปรับแต่งสไตล์ให้เรียบง่าย แต่ยังคงการทำงาน
+        link.style.transition = 'background-color 0.2s ease, color 0.2s ease';
+        
+        // เก็บ event listeners เดิมไว้ แต่ปรับแต่งเอฟเฟกต์
+        link.addEventListener('mouseenter', function() {
+            if (!this.classList.contains('active')) {
+                this.style.backgroundColor = 'rgba(19, 18, 97, 0.2)';
+            }
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            if (!this.classList.contains('active')) {
+                this.style.backgroundColor = 'transparent';
             }
         });
     });
-});
-// ==================== วิธีที่ 3: ใช้ JavaScript ลบเอฟเฟกต์ ==================== //
-
-// เพิ่มในไฟล์ script.js หรือใน <script> tag
-
-document.addEventListener('DOMContentLoaded', function() {
-    // ลบเอฟเฟกต์ทั้งหมดจากเมนู
-    disableMenuEffects();
-});
-
-function disableMenuEffects() {
-    const menuLinks = document.querySelectorAll('.sidebar a');
     
-    menuLinks.forEach(link => {
-        // ลบ CSS properties
-        link.style.transition = 'none';
-        link.style.transform = 'none';
-        link.style.background = 'transparent';
-        link.style.borderLeft = 'none';
-        link.style.border = 'none';
-        
-        // ลบ event listeners เดิม (ถ้ามี)
-        link.removeEventListener('mouseenter', null);
-        link.removeEventListener('mouseleave', null);
-        
-        // เพิ่ม event listeners ใหม่ที่ไม่มีเอฟเฟกต์
-        link.addEventListener('mouseenter', function() {
-            // ไม่ทำอะไร หรือทำสิ่งที่ต้องการ
-            console.log('Hover on:', this.textContent);
-        });
-        
-        link.addEventListener('click', function() {
-            // ลบ active class จากทุก link
-            menuLinks.forEach(l => l.classList.remove('active'));
-            
-            // ไม่เพิ่ม active class - หรือเพิ่มแบบไม่มีสไตล์
-            // this.classList.add('active'); // ไม่ใช้บรรทัดนี้
-            
-            console.log('Clicked on:', this.textContent);
-        });
-    });
-    
-    console.log('✅ All menu effects disabled');
+    console.log('✅ Menu styling adjusted (not removed)');
 }
 
-// ฟังก์ชันลบ active state จากทุกเมนู
-function removeAllActiveStates() {
-    const menuLinks = document.querySelectorAll('.sidebar a');
+// ฟังก์ชันอัปเดต active state สำหรับหน้าปัจจุบัน
+function updateActiveMenuState() {
+    const menuLinks = document.querySelectorAll('.sidebar .menu-link');
     menuLinks.forEach(link => {
-        link.classList.remove('active');
-        link.style.background = 'transparent';
-        link.style.color = 'rgba(255,255,255,0.8)';
-        link.style.fontWeight = '500';
-        link.style.borderLeft = 'none';
+        const itemId = link.dataset.id;
+        if (itemId === currentPage) {
+            link.classList.add('active');
+            link.style.backgroundColor = 'rgba(42, 82, 152, 0.5)';
+            link.style.color = '#ffffff';
+        } else {
+            link.classList.remove('active');
+            link.style.backgroundColor = 'transparent';
+            link.style.color = 'rgba(255,255,255,0.8)';
+        }
     });
 }
 
-// เรียกใช้ฟังก์ชันลบ active state
-removeAllActiveStates();
-
-// Re-apply หลังจาก page load เพื่อให้แน่ใจ
-window.addEventListener('load', function() {
-    setTimeout(disableMenuEffects, 100);
-    setTimeout(removeAllActiveStates, 200);
-});
+// เรียกใช้ฟังก์ชันอัปเดต active state หลังจากเมนูโหลดเสร็จ
+setTimeout(updateActiveMenuState, 900);

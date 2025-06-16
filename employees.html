@@ -18,17 +18,74 @@
        
         
         <div class="search-container">
-            <input type="text" class="search-box" placeholder="🔍 ค้นหาในคู่มือ..." id="searchInput">
+            <input type="text" class="search-box" placeholder="🔍 Search in the manual..." id="searchInput">
         </div>
         <ul id="menuList">
             <!-- Menu items will be rendered by JavaScript -->
         </ul>
+      
     </div>
-    
+    <style>
+   .menu-container {
+  position: relative;
+  width: 200px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ปุ่มหลัก */
+.system-login {
+  background-color: #2c3e50;
+  color: #ffffff;
+  padding: 12px 20px;
+  text-decoration: none;
+  display: block;
+  border-radius: 6px 6px 0 0;
+  transition: background-color 0.3s;
+}
+
+.system-login:hover {
+  background-color: #1a252f;
+}
+
+/* เมนูย่อย */
+.sub-menu {
+  display: none;
+  background-color: #34495e;
+  border-radius: 0 0 6px 6px;
+  overflow: hidden;
+}
+
+.menu-wrapper:hover .sub-menu {
+  display: block;
+}
+
+.sub-menu a {
+  color: white;
+  padding: 12px 20px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+.sub-menu a:hover {
+  background-color: #3d566e;
+}
+
+/* ปุ่มอื่น */
+.menu-link {
+  background-color: #2c3e50;
+  color: #ffffff;
+  padding: 12px 20px;
+  text-decoration: none;
+  display: block;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+</style>
     <div class="main-content">
         
         
-        <div class="header-section">
+        <div class="header-section" >
             <h2>System Login Check Method and Procedures </h2>
             
         </div>
@@ -40,7 +97,7 @@
       
         
         <div class="section">
-            <h3>Items to check on this page</h3>
+            <h3 id="items-to-check">Items to check on this page</h3>
             <ol class="config-steps">
                 <li><strong>Current time </strong>The display format will be: Month, Day, Year  </li>
                 <li><strong>Current date</strong>The display format will be: Month, Day, Year </li>
@@ -51,7 +108,7 @@
         </div>
         
         <div class="section">
-            <h3>Important Notes</h3>
+            <h3 id="important-notes">Important Notes</h3>
             <div class="troubleshoot-grid">
                 <div class="trouble-item">
                     <h4>🔐 Daily Date Check</h4>
