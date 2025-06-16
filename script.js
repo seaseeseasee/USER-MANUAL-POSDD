@@ -78,7 +78,7 @@ const menuItems = [
         text: 'Adding Change Money to set Cashier Permissions',
         keywords: 'adding change money set cashier permissions เพิ่มเงินทอน ตั้งค่าสิทธิ์แคชเชียร์',
         url: 'Sales.html#1',
-        parent: 'sales-access-and-opening-sales', // ชี้ไปที่เมนูหลัก Sales
+        parent: 'sales-access-and-opening-sales',
         type: 'submenu'
     },
     // เปลี่ยน ORDER PROCESSING ให้เป็นแค่ submenu
@@ -88,7 +88,7 @@ const menuItems = [
         text: 'ORDER PROCESSING',
         keywords: 'order processing กระบวนการสั่งซื้อ',
         url: 'Sales.html#2',
-        parent: 'sales-access-and-opening-sales', // ชี้ไปที่เมนูหลัก Sales
+        parent: 'sales-access-and-opening-sales',
         type: 'submenu'
     },
     // ย้าย New Order Processing ขึ้นมาเป็นลูกโดยตรงของ Sales Access
@@ -98,7 +98,7 @@ const menuItems = [
         text: 'New Order Processing',
         keywords: 'new order processing กระบวนการสั่งซื้อใหม่',
         url: 'Sales.html#2.1.',
-        parent: 'sales-access-and-opening-sales', // ชี้ไปที่เมนูหลัก Sales
+        parent: 'sales-access-and-opening-sales',
         type: 'submenu'
     },
     // ย้าย Customer Type Selection ขึ้นมาเป็นลูกโดยตรงของ Sales Access
@@ -108,7 +108,7 @@ const menuItems = [
         text: 'Customer Type Selection - DINE IN OR TAKE AWAY',
         keywords: 'customer type selection dine in take away เลือกประเภทลูกค้า ทานที่ร้าน กลับบ้าน',
         url: 'Sales.html#2.2.',
-        parent: 'sales-access-and-opening-sales', // ชี้ไปที่เมนูหลัก Sales
+        parent: 'sales-access-and-opening-sales',
         type: 'submenu'
     },
     // เปลี่ยน PAYMENT PROCESSING ให้เป็นแค่ submenu
@@ -118,7 +118,7 @@ const menuItems = [
         text: 'PAYMENT PROCESSING',
         keywords: 'payment processing กระบวนการชำระเงิน',
         url: 'Sales.html#3',
-        parent: 'sales-access-and-opening-sales', // ชี้ไปที่เมนูหลัก Sales
+         parent: 'sales-access-and-opening-sales',
         type: 'submenu'
     },
     // ย้ายลูกๆ ของ PAYMENT PROCESSING ขึ้นมาเป็นลูกโดยตรงของ Sales Access
@@ -137,7 +137,7 @@ const menuItems = [
         text: 'Exact Amount Payment Processing',
         keywords: 'exact amount payment processing ชำระเงินตรงจำนวน',
         url: 'Sales.html#3.2.',
-        parent: 'sales-access-and-opening-sales',
+         parent: 'sales-access-and-opening-sales',
         type: 'submenu'
     },
     {
@@ -146,7 +146,7 @@ const menuItems = [
         text: 'Credit Card Payment Processing',
         keywords: 'credit card payment processing ชำระด้วยบัตรเครดิต',
         url: 'Sales.html#3.3.',
-        parent: 'sales-access-and-opening-sales',
+         parent: 'sales-access-and-opening-sales',
         type: 'submenu'
     },
     {
@@ -202,7 +202,7 @@ const menuItems = [
         text: 'Using Additional Functions',
         keywords: 'using additional functions ใช้ฟังก์ชันเพิ่มเติม',
         url: 'Sales.html#7',
-        parent: 'sales-access-and-opening-sales', // ชี้ไปที่เมนูหลัก Sales
+        parent: 'sales-access-and-opening-sales',
         type: 'submenu'
     },
     // ย้ายลูกๆ ของ Using Additional Functions ขึ้นมาเป็นลูกโดยตรงของ Sales Access
@@ -2125,3 +2125,25 @@ function updateActiveMenuState() {
 
 // เรียกใช้ฟังก์ชันอัปเดต active state หลังจากเมนูโหลดเสร็จ
 setTimeout(updateActiveMenuState, 900);
+
+function clearSearch() {
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+        searchInput.value = ''; // ล้างข้อความในช่องค้นหา
+        performSearch(''); // เรียก performSearch ด้วยค่าว่างเปล่า เพื่อแสดงเมนูทั้งหมด
+    }
+    debugLog('🗑️ Search input cleared.');
+}
+
+// ... (ส่วนที่เหลือของโค้ด เช่น Event Listeners, initApp)
+
+// ตรวจสอบให้แน่ใจว่ามีการผูก Event Listener สำหรับปุ่ม Clear Search
+document.addEventListener('DOMContentLoaded', () => {
+    // ... (Event Listeners อื่นๆ)
+
+    const clearSearchBtn = document.getElementById('clear-search-btn'); // ตรวจสอบ ID ของปุ่ม Clear ของคุณ
+    if (clearSearchBtn) {
+        clearSearchBtn.addEventListener('click', clearSearch);
+        debugLog('🔍 Clear Search button listener attached.');
+    }
+});
