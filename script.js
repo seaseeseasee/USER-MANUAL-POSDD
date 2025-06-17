@@ -690,6 +690,7 @@ function setupSubMenuHover() {
     debugLog('✅ Sub-menu hover functionality setup');
 }
 
+
 // ต้องแน่ใจว่า initializeApp ถูกเรียก
 document.addEventListener('DOMContentLoaded', initializeApp);
 ;
@@ -703,14 +704,7 @@ document.addEventListener('DOMContentLoaded', initializeApp);
     // Setup keyboard shortcuts
     setupKeyboardShortcuts();
     
-    // Initialize Time Recording TOC if on time recording page
-    if (currentPage === 'time-recording') {
-        debugLog('🎯 Initializing Time Recording TOC...');
-        setTimeout(() => {
-            new TimeRecordingTooltipSystem();
-        }, 300);
-    }
-    
+  
     debugLog('✅ Initialization complete', currentPage);
 }
 
@@ -1520,7 +1514,7 @@ window.ManualApp = {
     currentPage: currentPage,
     detectCurrentPage: detectCurrentPage,
     debugLog: debugLog,
-    TimeRecordingTooltipSystem: TimeRecordingTooltipSystem
+    
 };
 
 // Additional debug helpers
@@ -2141,9 +2135,167 @@ function clearSearch() {
 document.addEventListener('DOMContentLoaded', () => {
     // ... (Event Listeners อื่นๆ)
 
-    const clearSearchBtn = document.getElementById('clear-search-btn'); // ตรวจสอบ ID ของปุ่ม Clear ของคุณ
+    const clearSearchBtn = document.getElementById('scrollToTopBtn'); // ตรวจสอบ ID ของปุ่ม Clear ของคุณ
     if (clearSearchBtn) {
         clearSearchBtn.addEventListener('click', clearSearch);
         debugLog('🔍 Clear Search button listener attached.');
     }
 });
+// JavaScript แบบ Debug - มีการแสดงผลใน Console
+        console.log('🔧 เริ่มโหลด JavaScript สำหรับปุ่มกลับขึ้นด้านบน');
+
+        // รอให้หน้าโหลดเสร็จ
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('✅ DOM โหลดเสร็จแล้ว');
+            
+            // หาปุ่ม
+            const scrollBtn = document.getElementById('scrollToTopBtn');
+            
+            if (!scrollBtn) {
+                console.error('❌ ไม่พบปุ่มที่มี ID: scrollToTopBtn');
+                alert('❌ ไม่พบปุ่ม! ตรวจสอบ ID ใน HTML');
+                return;
+            }
+            
+            console.log('✅ พบปุ่มแล้ว:', scrollBtn);
+
+            // ฟังก์ชันแสดง/ซ่อนปุ่ม
+            function toggleButton() {
+                const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Debug: แสดงตำแหน่งการเลื่อน
+                console.log('📏 ตำแหน่งการเลื่อน:', scrollPosition + 'px');
+                
+                if (scrollPosition > 300) {
+                    if (!scrollBtn.classList.contains('show')) {
+                        scrollBtn.classList.add('show');
+                        console.log('👁️ แสดงปุ่ม');
+                    }
+                } else {
+                    if (scrollBtn.classList.contains('show')) {
+                        scrollBtn.classList.remove('show');
+                        console.log('🙈 ซ่อนปุ่ม');
+                    }
+                }
+            }
+
+            // เมื่อเลื่อนหน้า
+            window.addEventListener('scroll', toggleButton);
+            console.log('✅ ติดตั้ง scroll listener แล้ว');
+
+            // เมื่อคลิกปุ่ม
+            scrollBtn.addEventListener('click', function() {
+                console.log('🖱️ คลิกปุ่มแล้ว - เลื่อนขึ้นด้านบน');
+                
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            console.log('✅ ติดตั้ง click listener แล้ว');
+
+            // ตรวจสอบตำแหน่งเริ่มต้น
+            toggleButton();
+        });
+
+        // ตรวจสอบ error ทั่วไป
+        window.addEventListener('error', function(e) {
+            console.error('❌ JavaScript Error:', e.message);
+        });
+
+        console.log('🚀 JavaScript พร้อมทำงาน')
+document.querySelectorAll('.menu-item').forEach(item => {
+    item.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+            document.body.classList.remove('sidebar-open'); // สมมุติว่ามี sidebar toggle
+            document.querySelector('.content').style.display = 'block'; // แสดงเนื้อหา
+        }
+    });
+});
+
+document.querySelectorAll('.menu-item').forEach(el => {
+    el.addEventListener('click', closeSidebarOnClick);
+});
+function setupMenuClickHandling() {
+    const menuContainer = document.getElementById('menu-container');
+    if (!menuContainer) return;
+
+    menuContainer.addEventListener('click', function (e) {
+        const target = e.target.closest('[data-id]');
+        if (!target) return;
+
+        const itemId = target.dataset.id;
+        const item = menuItems.find(i => i.id === itemId);
+        if (!item) return;
+
+        // Clear all active first
+        document.querySelectorAll('#menu-container .active').forEach(el => {
+            el.classList.remove('active');
+        });
+
+        // If submenu clicked → remove main highlight
+        if (item.type === 'submenu') {
+            // Highlight only this submenu
+            target.classList.add('active');
+        } else {
+            // Highlight the main menu
+            target.classList.add('active');
+
+            // Toggle submenu visibility
+            toggleSubmenus(itemId);
+        }
+
+        // Navigate if URL is set
+        if (item.url) {
+            window.location.href = item.url;
+        }
+    });
+}
+
+function toggleSubmenus(parentId) {
+    document.querySelectorAll(`[data-parent]`).forEach(el => {
+        if (el.dataset.parent === parentId) {
+            el.classList.toggle('hidden');
+        } else {
+            el.classList.add('hidden');
+        }
+    });
+}
+document.addEventListener('DOMContentLoaded', function () {
+    const toggleButton = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+
+    toggleButton.addEventListener('click', function () {
+        sidebar.classList.toggle('hidden');
+    });
+});
+// เพิ่มโค้ดนี้ใน script.js ภายใน document.addEventListener('DOMContentLoaded', function () { ... });
+
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+    // เมื่อผู้ใช้เลื่อนหน้าจอ ให้แสดงหรือซ่อนปุ่ม
+    window.onscroll = function() {
+        if (scrollToTopBtn) { // ตรวจสอบว่าปุ่มมีอยู่จริงก่อนใช้งาน
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        }
+    };
+
+    // เมื่อผู้ใช้คลิกที่ปุ่ม ให้เลื่อนกลับไปด้านบนสุดของเอกสาร
+    if (scrollToTopBtn) { // ตรวจสอบว่าปุ่มมีอยู่จริงก่อนเพิ่ม Event Listener
+        scrollToTopBtn.addEventListener("click", function() {
+            // ใช้ window.scrollTo() สำหรับการเลื่อนที่ราบรื่น (smooth scroll)
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth" // ทำให้การเลื่อนเป็นไปอย่างราบรื่น
+            });
+
+            // สำหรับเบราว์เซอร์เก่าที่ไม่รองรับ behavior: "smooth"
+            // document.body.scrollTop = 0; // สำหรับ Safari
+            // document.documentElement.scrollTop = 0; // สำหรับ Chrome, Firefox, IE และ Opera
+        });
+    }

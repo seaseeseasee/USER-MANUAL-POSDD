@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="Sales.css">
 </head>
 <body>
-    <div class="sidebar">
+    
+    <div class="sidebar" id="sidebar">
+     
         <!-- Logo Section -->
         <div class="logo-container">
             <img src="img/LOGO.png" alt="Company Logo" class="sidebar-logo">
@@ -898,14 +900,20 @@
             <strong>"Your Satisfaction is our Quality"</strong>
  300       </div>
     </div>
-        <button id="scrollToTopBtn" class="scroll-to-top" title="กลับขึ้นด้านบน">
-            <i class="scroll-icon">⬆️</i>
-        </button>
+       <button id="scrollToTopBtn" title="Go to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up">
+        <line x1="12" y1="19" x2="12" y2="5"></line>
+        <polyline points="5 12 12 5 19 12"></polyline>
+    </svg>
+</button>
     <!-- กำหนดหน้าปัจจุบันก่อนโหลด script -->
       <script>
         window.CURRENT_PAGE = 'sales-access';
         console.log('🎯 sales.html loaded, CURRENT_PAGE set to:', window.CURRENT_PAGE);
     </script>
+    
+
     <script src="script.js"></script>
+ 
 </body>
 </html>

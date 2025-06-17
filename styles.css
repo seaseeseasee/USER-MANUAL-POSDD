@@ -175,37 +175,12 @@ img.logo,
     width: 3px;
 }
 
-/* ==================== SIDEBAR TOGGLE BUTTON ==================== */
-.sidebar-toggle {
-    position: fixed;
-    top: 20px;
-    left: 290px;
-    width: 40px;
-    height: 40px;
-    background: #4a5568 !important;
-    color: white;
-    border: none;
-    border-radius: 0 8px 8px 0;
-    cursor: pointer;
-    font-size: 16px;
-    z-index: 1001;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+.menu-toggle {
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
-.sidebar-toggle:hover {
-    background: #2d3748 !important;
-    transform: scale(1.05);
-}
-
-.sidebar-toggle.collapsed {
-    left: 80px;
-}
-
+        
 /* ==================== MAIN CONTENT STYLES ==================== */
 .main-content {
     flex: 1;
@@ -534,51 +509,7 @@ tr:hover {
     text-decoration: underline;
 }
 
-/* ==================== SCROLL TO TOP BUTTON ==================== */
-.scroll-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 20px;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-    transition: all 0.3s ease;
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.scroll-to-top:hover {
-    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
-    transform: translateY(0) scale(1.1);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-}
-
-.scroll-to-top.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.scroll-to-top:active {
-    transform: scale(0.95);
-}
-
-.scroll-icon {
-    display: block;
-    line-height: 1;
-    font-style: normal;
-}
 
 /* ==================== UTILITY CLASSES ==================== */
 .hidden {
@@ -1254,4 +1185,139 @@ input:focus {
 .sub-menu.hide { /* เพิ่ม class นี้ด้วย JS เมื่อต้องการซ่อน */
     max-height: 0;
     opacity: 0;
+}
+ 
+
+
+
+
+
+
+
+
+
+
+
+.search-box:focus {
+    transform: none !important;
+    transition: none !important;
+    /* เก็บเฉพาะการเปลี่ยนสี */
+    background: rgba(255,255,255,0.15) !important;
+    border-color: #3498db !important;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3) !important;
+}
+
+/* ลบเอฟเฟกต์ของ logo */
+.logo,
+.sidebar-logo,
+.sidebar img {
+    transition: none !important;
+    transform: none !important;
+    animation: none !important;
+}
+
+.logo:hover,
+.sidebar-logo:hover,
+.sidebar img:hover {
+    transform: none !important;
+    transition: none !important;
+    /* เก็บเฉพาะ brightness */
+    filter: brightness(1.1) !important;
+}
+
+/* ลบเอฟเฟกต์ animation ของ menu items */
+.menu-item-animate {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ลบ loading animation */
+.loading::before,
+.loading::after {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+/* ลบ hover effects ของ table rows */
+tr:hover {
+    transform: none !important;
+    transition: none !important;
+}
+
+/* ลบ hover effects ของ cards และ sections */
+.trouble-item:hover,
+.section:hover {
+    transform: none !important;
+    transition: none !important;
+}
+
+/* ลบ focus effects ที่มี transform */
+*:focus {
+    transform: none !important;
+    transition: none !important;
+}
+
+
+.submenu,
+.submenu:active,
+.submenu.active,
+.submenu[aria-expanded="true"] {
+    background: none !important;
+    color: inherit !important;
+    box-shadow: none !important;
+}
+.submenu.is-active {
+    background: transparent !important;
+    color: inherit !important;
+}
+.menu-item.active {
+  background-color: #3498db;
+  color: white;
+}
+.submenu-item {
+  padding-left: 20px;
+}
+.submenu-item.hidden {
+  display: none;
+}
+/* ในไฟล์ CSS ของคุณ (เช่น style.css) */
+#scrollToTopBtn {
+    display: none; /* ซ่อนปุ่มไว้ในตอนแรก */
+    position: fixed; /* ให้อยู่กับที่เมื่อเลื่อนหน้าจอ */
+    bottom: 20px; /* ระยะห่างจากขอบล่าง */
+    right: 20px; /* ระยะห่างจากขอบขวา */
+    z-index: 9999; /* ให้ปุ่มอยู่เหนือองค์ประกอบอื่น ๆ */
+    border: none; /* ไม่มีเส้นขอบ */
+    outline: none; /* ไม่มีเส้นขอบเมื่อโฟกัส */
+    background-color: #4A5568; /* สีพื้นหลัง (Dark Gray, ตาม Tailwind CSS) */
+    color: white; /* สีของไอคอน/ข้อความ */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นรูปมือเมื่อชี้ */
+    padding: 15px; /* ระยะห่างภายในปุ่ม */
+    border-radius: 50%; /* ทำให้ปุ่มกลม */
+    font-size: 18px; /* ขนาดฟอนต์ */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* เพิ่ม transition */
+}
+
+#scrollToTopBtn:hover {
+    background-color: #2D3748; /* สีเข้มขึ้นเมื่อโฮเวอร์ */
+    transform: translateY(-2px); /* เลื่อนขึ้นเล็กน้อยเมื่อโฮเวอร์ */
+}
+
+/* หากคุณต้องการให้ไอคอนดูดีขึ้น */
+#scrollToTopBtn svg {
+    display: block; /* ทำให้ SVG อยู่กึ่งกลาง */
+    margin: 0 auto;
 }
