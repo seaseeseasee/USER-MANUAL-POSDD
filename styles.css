@@ -538,8 +538,14 @@ tr:hover {
     }
     
     .sidebar-toggle {
-        left: 15px;
-    }
+    position: fixed;  /* หรือ absolute ขึ้นอยู่กับ parent element */
+    top: 0;           /* ติดด้านบนสุด */
+    left: -1;          /* ติดด้านซ้ายสุด */
+    width: 50px;
+    height: 50px;
+    font-size: 14px;
+    z-index: 1000;    /* ให้อยู่บนสุด */
+}
     
     .logo,
     .sidebar-logo {
@@ -566,11 +572,14 @@ tr:hover {
     }
     
     .sidebar-toggle {
-        left: 260px;
-        width: 35px;
-        height: 35px;
-        font-size: 14px;
-    }
+    position: fixed;  /* หรือ absolute ขึ้นอยู่กับ parent element */
+    top: 0;           /* ติดด้านบนสุด */
+    left: 0;          /* ติดด้านซ้ายสุด */
+    width: 50px;
+    height: 50px;
+    font-size: 14px;
+    z-index: 1000;    /* ให้อยู่บนสุด */
+}
     
     .logo,
     .sidebar-logo {
@@ -605,12 +614,15 @@ tr:hover {
         padding: 25px;
     }
     
-    .sidebar-toggle {
-        left: 200px;
-        width: 130px;
-        height: 35px;
-        font-size: 14px;
-    }
+     .sidebar-toggle {
+    position: fixed;  /* หรือ absolute ขึ้นอยู่กับ parent element */
+    top: 0;           /* ติดด้านบนสุด */
+    left: 0;          /* ติดด้านซ้ายสุด */
+    width: 50px;
+    height: 50px;
+    font-size: 14px;
+    z-index: 1000;    /* ให้อยู่บนสุด */
+}
     
     .logo,
     .sidebar-logo {
@@ -668,16 +680,15 @@ tr:hover {
         border-radius: 15px;
     }
     
-    .sidebar-toggle {
-        left: 80px;
-        top: 20px;
-        border-radius: 8px;
-        background: rgba(74, 85, 104, 0.9) !important;
-        backdrop-filter: blur(10px);
-        width: 30px;
-        height: 30px;
-        font-size: 18px;
-    }
+   .sidebar-toggle {
+    position: fixed;  /* หรือ absolute ขึ้นอยู่กับ parent element */
+    top: 0;           /* ติดด้านบนสุด */
+    left: -1;          /* ติดด้านซ้ายสุด */
+    width: 50px;
+    height: 50px;
+    font-size: 14px;
+    z-index: 1000;    /* ให้อยู่บนสุด */
+}
     
     .sidebar-overlay {
         position: fixed;
@@ -769,14 +780,15 @@ tr:hover {
         border-radius: 10px;
     }
     
-    .sidebar-toggle {
-        width: 50px;
-        height: 50px;
-        font-size: 16px;
-        top: 15px;
-        left: 15px;
-    }
-    
+     .sidebar-toggle {
+    position: fixed;  /* หรือ absolute ขึ้นอยู่กับ parent element */
+    top: 0;           /* ติดด้านบนสุด */
+    left: -1;          /* ติดด้านซ้ายสุด */
+    width: 50px;
+    height: 50px;
+    font-size: 14px;
+    z-index: 1000;    /* ให้อยู่บนสุด */
+}
     .logo,
     .sidebar-logo {
         max-width: 140px !important;
@@ -823,7 +835,15 @@ tr:hover {
     }
     
     .sidebar.collapsed .sidebar-toggle {
-        left: 180px;
+       
+    position: fixed;  /* หรือ absolute ขึ้นอยู่กับ parent element */
+    top: 0;           /* ติดด้านบนสุด */
+    left: -1;          /* ติดด้านซ้ายสุด */
+    width: 50px;
+    height: 50px;
+    font-size: 14px;
+    z-index: 1000;    /* ให้อยู่บนสุด */
+
     }
     
     .sidebar.collapsed .logo,
