@@ -55,6 +55,25 @@ const menuItems = [
         parent: 'time-recording',
         type: 'submenu'
     },
+    
+    {
+        id: 'clock-in-BREAK',
+        icon: '',
+        text: 'RECORDING BREAK TIMES ',
+        keywords: 'clock in บันทึกเวลาเบรก เข้าทำงาน',
+        url: 'Time.html#clock-in-BREAK',
+        parent: 'time-recording',
+        type: 'submenu'
+    },
+    {
+        id: 'clock-end-BREAK',
+        icon: '',
+        text: 'END OF BREAK TIME ',
+        keywords: 'clock in จบเวลา เข้าทำงาน',
+        url: 'Time.html#clock-end-BREAK',
+        parent: 'time-recording',
+        type: 'submenu'
+    },
      {
         id: 'Clock Out',
         icon: '',
