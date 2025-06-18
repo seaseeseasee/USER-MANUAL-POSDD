@@ -243,11 +243,11 @@ const menuItems = [
         type: 'submenu'
     },
     {
-        id: '7.5.',
+        id: '7.4.',
         icon: '',
         text: 'OPEN CASH DRAWER',
         keywords: 'open cash drawer เปิดลิ้นชักเก็บเงิน',
-        url: 'Sales.html#7.5.',
+        url: 'Sales.html#7.4.',
         parent: 'sales-access-and-opening-sales',
         type: 'submenu'
     },
@@ -2298,4 +2298,5 @@ document.addEventListener('DOMContentLoaded', function () {
             // document.body.scrollTop = 0; // สำหรับ Safari
             // document.documentElement.scrollTop = 0; // สำหรับ Chrome, Firefox, IE และ Opera
         });
-    }
+    } 
+  

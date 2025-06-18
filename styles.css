@@ -4,6 +4,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+.page-wrapper {
+  position: relative; /* สำคัญมาก เพื่อให้ absolute ทำงาน */
+}
 
 body {
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -538,14 +541,16 @@ tr:hover {
     }
     
     .sidebar-toggle {
-    position: fixed;  /* หรือ absolute ขึ้นอยู่กับ parent element */
-    top: 0;           /* ติดด้านบนสุด */
-    left: -1;          /* ติดด้านซ้ายสุด */
+    position: absolute; /* หรือ relative แล้วแต่โครงสร้าง */
+    top: 0;
+    left: -1;
     width: 50px;
     height: 50px;
     font-size: 14px;
-    z-index: 1000;    /* ให้อยู่บนสุด */
+
 }
+
+
     
     .logo,
     .sidebar-logo {
